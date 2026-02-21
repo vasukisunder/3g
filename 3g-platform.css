@@ -4059,3 +4059,248 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* ════════════════════════════════════════
+   MOBILE  (≤ 768px)
+════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  /* ── NAV ── */
+  #nav {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 0;
+    padding: 0 12px;
+  }
+  #nav::-webkit-scrollbar { display: none; }
+
+  #nav-logo { margin-right: 12px; flex-shrink: 0; }
+  #nav-logo-img { height: 32px; }
+
+  .ntab {
+    padding: 0 9px;
+    font-size: 11px;
+    flex-shrink: 0;
+  }
+
+  .nav-sect-div,
+  .nav-sect-lbl { display: none; }
+
+
+  /* ── ADMIN HERO ── */
+  .adm-hero {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px 18px;
+  }
+
+  .adm-stats {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 0;
+  }
+
+  .adm-stat-item {
+    flex: 1 1 45%;
+    align-items: flex-start;
+    padding: 10px 0;
+  }
+
+  .adm-stat-div { display: none; }
+
+
+  /* ── ADMIN BODY (already 1fr at 900px, just padding fix) ── */
+  .adm-main { padding: 14px; }
+  .adm-sec   { padding: 0; }
+
+
+  /* ── TRIAD CARDS ── */
+  .tg {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .tc { padding: 13px 13px; }
+
+  .tc-m,
+  .tc-f { font-size: 11px; }
+
+
+  /* ── PROGRAM HEALTH ROW ── */
+  .hp-row { flex-direction: column; }
+
+
+  /* ── SESSION KITS GRID ── */
+  .kit-grid { grid-template-columns: 1fr 1fr; }
+
+
+  /* ── IN-PERSON: PHASE TABS ── */
+  .ph-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+    margin-bottom: 16px;
+  }
+  .ph-tabs::-webkit-scrollbar { display: none; }
+  .pht { flex-shrink: 0; }
+
+
+  /* ── TEEN VIEW: restore hidden panels, stack layout ── */
+  .teen-layout {
+    grid-template-columns: 1fr;
+    height: auto;
+    overflow: visible;
+  }
+
+  .teen-left,
+  .teen-sb {
+    display: flex;
+    overflow-y: visible;
+    height: auto;
+  }
+
+  .teen-left {
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px;
+    background: #0d1520;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+  }
+
+  .teen-sb {
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px;
+    background: rgba(255,255,255,.018);
+    border-top: 1px solid rgba(255,255,255,.05);
+  }
+
+  .teen-video {
+    height: 280px;
+    flex-shrink: 0;
+  }
+
+  .teen-video .vcall-grid {
+    height: 100%;
+  }
+
+  .teen-layout.video-minimized {
+    grid-template-columns: 1fr;
+  }
+
+
+  /* ── SENIOR VIEW: restore hidden panel, stack layout ── */
+  .snr-layout {
+    grid-template-columns: 1fr;
+    height: auto;
+    overflow: visible;
+  }
+
+  .snr-right {
+    display: flex;
+    overflow-y: visible;
+    height: auto;
+    padding: 16px;
+  }
+
+  .snr-video {
+    height: 260px;
+    flex-shrink: 0;
+  }
+
+  .snr-video .vcall-grid {
+    height: 100%;
+  }
+
+  .tri-strip {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .snr-layout.video-minimized {
+    grid-template-columns: 1fr;
+  }
+
+
+  /* ── CHILD VIEW: restore hidden panel, stack layout ── */
+  .ch-layout {
+    grid-template-columns: 1fr;
+    height: auto;
+    overflow: visible;
+  }
+
+  .ch-panel {
+    display: flex;
+    overflow-y: visible;
+    height: auto;
+    padding: 16px;
+  }
+
+  .ch-video {
+    height: 260px;
+    flex-shrink: 0;
+  }
+
+  .ch-video .vcall-grid {
+    height: 100%;
+  }
+
+  .ch-deco { display: none; }
+
+  .ch-layout.video-minimized {
+    grid-template-columns: 1fr;
+  }
+
+
+  /* ── REFLECTION ── */
+  .refl-body {
+    padding: 16px;
+  }
+
+  .refl-hd {
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .refl-s {
+    max-width: 100%;
+    padding-top: 0;
+  }
+
+  .refl-t { font-size: 22px; }
+
+  .refl-bottom {
+    grid-template-columns: 1fr;
+  }
+
+  .wr { flex-direction: column; }
+
+  .refl-complete-btn { width: 100%; }
+
+
+  /* ── KIT DETAIL MODAL (bottom sheet) ── */
+  .kcm-bg {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .kcm {
+    width: 100%;
+    border-radius: 18px 18px 0 0;
+    max-height: 92vh;
+  }
+
+
+  /* ── END SCREEN ── */
+  .end-card {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+
+}
