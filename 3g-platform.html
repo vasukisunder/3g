@@ -243,12 +243,15 @@
     <!-- LEFT: session prompts -->
     <div class="teen-left">
       <div class="phase-timer" id="phase-timer">
-        <div class="pt-labels">
-          <div class="pt-name" id="pt-name">Together Time</div>
-          <div class="pt-sub">20 min phase</div>
-          <div class="pt-track"><div class="pt-fill" id="pt-fill" style="width:58%"></div></div>
+        <div class="pt-row">
+          <div class="pt-labels">
+            <div class="pt-name" id="pt-name">Together Time</div>
+            <div class="pt-sub">20 min phase</div>
+            <div class="pt-track"><div class="pt-fill" id="pt-fill" style="width:58%"></div></div>
+          </div>
+          <div class="pt-val" id="pt-val">8:24</div>
         </div>
-        <div class="pt-val" id="pt-val">8:24</div>
+        <button class="tc-btn tc-slow" id="slow-btn" onclick="toggleSlow()">⏸ Slow down</button>
       </div>
       <div class="t-phase-tag">● Together Time</div>
       <div class="t-prompt">Share a time you had to keep trying — and how it felt to finally get it.</div>
@@ -261,7 +264,7 @@
         </div>
       </div>
       <div class="t-ctrls">
-        <button class="tc-btn" id="slow-btn" onclick="toggleSlow()">⏸ Slow down</button>
+        <button class="tc-btn" onclick="prevPhase()">← Previous phase</button>
       </div>
     </div>
 
@@ -307,7 +310,7 @@
     <div class="teen-sb">
       <div class="sw">
         <div class="sw-lbl">Readiness</div>
-        <div style="font-size:11px;color:rgba(255,255,255,.28);line-height:1.5;margin-bottom:9px">Next phase unlocks when all three signal ready from their own screens.</div>
+        <div style="font-size:11px;color:rgba(255, 255, 255, 0.582);line-height:1.5;margin-bottom:9px">Next phase unlocks when all three signal ready from their own screens.</div>
         <div class="pi"><div class="pav" style="background:rgba(91,187,111,.15)">👩‍🦳</div><div><div class="pn"><span class="n-dorothy">Dorothy</span></div><div class="ps" id="ps-dorothy">Waiting...</div></div><div class="psig sig-wait" id="psig-dorothy"></div></div>
         <div class="pi"><div class="pav" style="background:rgba(123,94,167,.15)">🧑</div><div><div class="pn"><span class="n-marcus">Marcus</span></div><div class="ps">You · ready</div></div><div class="psig sig-you"></div></div>
         <div class="pi"><div class="pav" style="background:rgba(64,191,255,.15)">👦</div><div><div class="pn"><span class="n-liam">Liam</span></div><div class="ps" id="ps-liam">Waiting...</div></div><div class="psig sig-wait" id="psig-liam"></div></div>
@@ -318,9 +321,9 @@
       </div>
       <div class="sw">
         <div class="sw-lbl">Session Arc</div>
-        <div class="arc-it done"><div class="arc-dot" style="background:var(--sun)"></div><div class="arc-nm">Arrival & Spark</div></div>
-        <div class="arc-it done"><div class="arc-dot" style="background:var(--sun)"></div><div class="arc-nm">Sesame Video</div></div>
-        <div class="arc-it now"><div class="arc-dot" style="background:var(--sun)"></div><div class="arc-nm">Share & Connect</div></div>
+        <div class="arc-it done"><div class="arc-dot" style="background:#F5A623"></div><div class="arc-nm">Arrival & Spark</div></div>
+        <div class="arc-it done"><div class="arc-dot" style="background:#E05C5C"></div><div class="arc-nm">Sesame Video</div></div>
+        <div class="arc-it now"><div class="arc-dot" style="background:#F07C2E"></div><div class="arc-nm">Share & Connect</div></div>
         <div class="arc-it"><div class="arc-dot" style="background:rgba(255,255,255,.1)"></div><div class="arc-nm">Activity Together</div></div>
         <div class="arc-it"><div class="arc-dot" style="background:rgba(255,255,255,.1)"></div><div class="arc-nm">Closing Ritual</div></div>
       </div>

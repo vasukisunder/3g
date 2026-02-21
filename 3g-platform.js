@@ -131,9 +131,33 @@ function react(btn, emoji) {
   setTimeout(() => btn.classList.remove('active'), 2000);
 }
 
+function burstSparkles(btn) {
+  const emojis = ['✨','🌟','💫','⭐','🎉','🎊','🌈','💥','🦄','🍭'];
+  const rect = btn.getBoundingClientRect();
+  const cx = rect.left + rect.width / 2;
+  const cy = rect.top  + rect.height / 2;
+  for (let i = 0; i < 18; i++) {
+    const el = document.createElement('span');
+    el.className = 'ch-sparkle';
+    el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    const angle = (i / 18) * 2 * Math.PI + Math.random() * .5;
+    const dist  = 60 + Math.random() * 80;
+    el.style.setProperty('--dx', `${Math.cos(angle) * dist}px`);
+    el.style.setProperty('--dy', `${Math.sin(angle) * dist}px`);
+    el.style.setProperty('--dr', `${(Math.random() - .5) * 360}deg`);
+    el.style.left = cx + 'px';
+    el.style.top  = cy + 'px';
+    el.style.fontSize = (12 + Math.random() * 10) + 'px';
+    el.style.animationDelay = (Math.random() * .12) + 's';
+    document.body.appendChild(el);
+    el.addEventListener('animationend', () => el.remove());
+  }
+}
+
 function childReady() {
   const btn = document.getElementById('ch-share-btn');
   if (!btn) return;
+  burstSparkles(btn);
   btn.textContent = 'Done ✓';
   btn.classList.add('done');
   btn.onclick = null;
@@ -292,6 +316,12 @@ function ph(i) {
   if (i === 1) initVid();
 }
 
+function prevPhase() {
+  const tabs = Array.from(document.querySelectorAll('.pht'));
+  const cur  = tabs.findIndex(t => t.classList.contains('on'));
+  if (cur > 0) ph(cur - 1);
+}
+
 function tr(id) {
   const b = document.getElementById(id);
   if (!b) return;
@@ -353,20 +383,20 @@ const TRIADS = [
     statusCls: 'bg-a',
     next: 'Session 4 · Today',
     sessions: [
-      { num: 1, theme: "Hello, I'm Me",        state: 'done'     },
-      { num: 2, theme: "Something I Love",      state: 'done'     },
-      { num: 3, theme: "Hard Days",             state: 'done'     },
-      { num: 4, theme: "Power of Yet",          state: 'current'  },
-      { num: 5, theme: "Try a Kindness",        state: 'upcoming' },
-      { num: 6, theme: "My Neighborhood",       state: 'upcoming' },
-      { num: 7, theme: "Making Things",         state: 'upcoming' },
-      { num: 8, theme: "Looking Back",          state: 'upcoming' },
+      { num: 1, theme: "Maya's Name Song",      state: 'done'     },
+      { num: 2, theme: "B Is for Book",          state: 'done'     },
+      { num: 3, theme: "The Waiting Game",       state: 'done'     },
+      { num: 4, theme: "F Is for Friends",       state: 'current'  },
+      { num: 5, theme: "The Power of Yet",       state: 'upcoming' },
+      { num: 6, theme: "Put Down the Duckie",    state: 'upcoming' },
+      { num: 7, theme: "Try a Little Kindness",  state: 'upcoming' },
+      { num: 8, theme: "Proud of You",           state: 'upcoming' },
     ],
     health: [
-      { label: 'Session consistency',     pct: 100, color: 'var(--grass)' },
-      { label: 'Reflection depth',        pct: 82,  color: 'var(--sky)'   },
-      { label: 'Teen confidence arc',     pct: 78,  color: 'var(--plum)'  },
-      { label: 'Cross-gen participation', pct: 96,  color: 'var(--sun)'   },
+      { label: 'Session consistency',     pct: 100, color: '#F5C518' },
+      { label: 'Reflection depth',        pct: 82,  color: '#65E97B' },
+      { label: 'Teen confidence arc',     pct: 78,  color: '#C778E8' },
+      { label: 'Cross-gen participation', pct: 96,  color: '#FF9F6B' },
     ],
     signal: {
       warn: false,
@@ -390,20 +420,20 @@ const TRIADS = [
     statusCls: 'bg-a',
     next: 'Session 6 · Tomorrow',
     sessions: [
-      { num: 1, theme: "Hello, I'm Me",        state: 'done'     },
-      { num: 2, theme: "Something I Love",      state: 'done'     },
-      { num: 3, theme: "Hard Days",             state: 'done'     },
-      { num: 4, theme: "Power of Yet",          state: 'done'     },
-      { num: 5, theme: "Try a Kindness",        state: 'done'     },
-      { num: 6, theme: "My Neighborhood",       state: 'current'  },
-      { num: 7, theme: "Making Things",         state: 'upcoming' },
-      { num: 8, theme: "Looking Back",          state: 'upcoming' },
+      { num: 1, theme: "Maya's Name Song",      state: 'done'     },
+      { num: 2, theme: "B Is for Book",          state: 'done'     },
+      { num: 3, theme: "The Waiting Game",       state: 'done'     },
+      { num: 4, theme: "F Is for Friends",       state: 'done'     },
+      { num: 5, theme: "The Power of Yet",       state: 'done'     },
+      { num: 6, theme: "Put Down the Duckie",    state: 'current'  },
+      { num: 7, theme: "Try a Little Kindness",  state: 'upcoming' },
+      { num: 8, theme: "Proud of You",           state: 'upcoming' },
     ],
     health: [
-      { label: 'Session consistency',     pct: 100, color: 'var(--grass)' },
-      { label: 'Reflection depth',        pct: 91,  color: 'var(--sky)'   },
-      { label: 'Teen confidence arc',     pct: 88,  color: 'var(--plum)'  },
-      { label: 'Cross-gen participation', pct: 95,  color: 'var(--sun)'   },
+      { label: 'Session consistency',     pct: 100, color: '#F5C518' },
+      { label: 'Reflection depth',        pct: 91,  color: '#65E97B' },
+      { label: 'Teen confidence arc',     pct: 88,  color: '#C778E8' },
+      { label: 'Cross-gen participation', pct: 95,  color: '#FF9F6B' },
     ],
     signal: {
       warn: false,
@@ -427,20 +457,20 @@ const TRIADS = [
     statusCls: 'bg-p',
     next: '12 days since last session',
     sessions: [
-      { num: 1, theme: "Hello, I'm Me",        state: 'done'     },
-      { num: 2, theme: "Something I Love",      state: 'done'     },
-      { num: 3, theme: "Hard Days",             state: 'paused'   },
-      { num: 4, theme: "Power of Yet",          state: 'upcoming' },
-      { num: 5, theme: "Try a Kindness",        state: 'upcoming' },
-      { num: 6, theme: "My Neighborhood",       state: 'upcoming' },
-      { num: 7, theme: "Making Things",         state: 'upcoming' },
-      { num: 8, theme: "Looking Back",          state: 'upcoming' },
+      { num: 1, theme: "Maya's Name Song",      state: 'done'     },
+      { num: 2, theme: "B Is for Book",          state: 'done'     },
+      { num: 3, theme: "The Waiting Game",       state: 'paused'   },
+      { num: 4, theme: "F Is for Friends",       state: 'upcoming' },
+      { num: 5, theme: "The Power of Yet",       state: 'upcoming' },
+      { num: 6, theme: "Put Down the Duckie",    state: 'upcoming' },
+      { num: 7, theme: "Try a Little Kindness",  state: 'upcoming' },
+      { num: 8, theme: "Proud of You",           state: 'upcoming' },
     ],
     health: [
-      { label: 'Session consistency',     pct: 62, color: 'var(--sun)'   },
-      { label: 'Reflection depth',        pct: 55, color: 'var(--sky)'   },
-      { label: 'Teen confidence arc',     pct: 49, color: 'var(--plum)'  },
-      { label: 'Cross-gen participation', pct: 71, color: 'var(--grass)' },
+      { label: 'Session consistency',     pct: 62, color: '#F5C518' },
+      { label: 'Reflection depth',        pct: 55, color: '#65E97B' },
+      { label: 'Teen confidence arc',     pct: 49, color: '#C778E8' },
+      { label: 'Cross-gen participation', pct: 71, color: '#FF9F6B' },
     ],
     signal: {
       warn: true,
@@ -463,20 +493,20 @@ const TRIADS = [
     statusCls: 'bg-a',
     next: 'Session 1 · Next week',
     sessions: [
-      { num: 1, theme: "Hello, I'm Me",        state: 'current'  },
-      { num: 2, theme: "Something I Love",      state: 'upcoming' },
-      { num: 3, theme: "Hard Days",             state: 'upcoming' },
-      { num: 4, theme: "Power of Yet",          state: 'upcoming' },
-      { num: 5, theme: "Try a Kindness",        state: 'upcoming' },
-      { num: 6, theme: "My Neighborhood",       state: 'upcoming' },
-      { num: 7, theme: "Making Things",         state: 'upcoming' },
-      { num: 8, theme: "Looking Back",          state: 'upcoming' },
+      { num: 1, theme: "Maya's Name Song",      state: 'current'  },
+      { num: 2, theme: "B Is for Book",          state: 'upcoming' },
+      { num: 3, theme: "The Waiting Game",       state: 'upcoming' },
+      { num: 4, theme: "F Is for Friends",       state: 'upcoming' },
+      { num: 5, theme: "The Power of Yet",       state: 'upcoming' },
+      { num: 6, theme: "Put Down the Duckie",    state: 'upcoming' },
+      { num: 7, theme: "Try a Little Kindness",  state: 'upcoming' },
+      { num: 8, theme: "Proud of You",           state: 'upcoming' },
     ],
     health: [
-      { label: 'Session consistency',     pct: 0, color: 'var(--grass)' },
-      { label: 'Reflection depth',        pct: 0, color: 'var(--sky)'   },
-      { label: 'Teen confidence arc',     pct: 0, color: 'var(--plum)'  },
-      { label: 'Cross-gen participation', pct: 0, color: 'var(--sun)'   },
+      { label: 'Session consistency',     pct: 0, color: '#F5C518' },
+      { label: 'Reflection depth',        pct: 0, color: '#65E97B' },
+      { label: 'Teen confidence arc',     pct: 0, color: '#C778E8' },
+      { label: 'Cross-gen participation', pct: 0, color: '#FF9F6B' },
     ],
     signal: {
       warn: false,
