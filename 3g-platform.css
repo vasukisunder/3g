@@ -93,6 +93,30 @@ body {
   border-bottom-color: var(--sun);
 }
 
+.nav-sect-div {
+  width: 1px;
+  height: 22px;
+  background: rgba(255,255,255,.12);
+  margin: 0 12px;
+  flex-shrink: 0;
+}
+
+.nav-sect-lbl {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .3px;
+  color: rgba(255,255,255,.32);
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 5px;
+  padding: 3px 9px;
+  margin-right: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  flex-shrink: 0;
+}
+
 
 /* ════════════════════════════════════════
    SCREEN SWITCHING
@@ -1698,7 +1722,7 @@ body {
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 1.5px;
-  color: rgba(64,191,255,.3);
+  color: rgba(64, 191, 255, 0.813);
 }
 
 .ovn-q {
@@ -2788,6 +2812,16 @@ body {
   background: #EEF6FF;
 }
 
+/* ── Child panel decorative SVG ── */
+.ch-deco {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
 .ch-banner {
   position: sticky;
   top: 64px;
@@ -2868,6 +2902,7 @@ body {
 }
 
 .ch-panel {
+  position: relative;
   background: #EEF6FF;
   border-left: 1px solid rgba(64,191,255,.15);
   padding: 22px 18px;
@@ -2875,6 +2910,12 @@ body {
   display: flex;
   flex-direction: column;
   gap: 14px;
+}
+
+/* keep actual panel content above the deco SVG */
+.ch-panel > *:not(.ch-deco) {
+  position: relative;
+  z-index: 1;
 }
 
 .ch-title {
@@ -3009,6 +3050,27 @@ body {
 
 #s-reflection {
   background: var(--ink);
+  position: relative;
+}
+
+.refl-side {
+  position: fixed;
+  top: 64px;
+  bottom: 0;
+  width: calc((100vw - 1080px) / 2);
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.refl-side--l { left: 0; }
+.refl-side--r { right: 0; }
+
+.rs {
+  position: absolute;
+}
+
+@media (max-width: 1140px) {
+  .refl-side { display: none; }
 }
 
 .refl-banner {

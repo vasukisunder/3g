@@ -5,6 +5,7 @@ function go(id) {
   IDS.forEach(s => document.getElementById('s-'+s).classList.toggle('on', s===id));
   document.querySelectorAll('.ntab').forEach((t,i) => t.classList.toggle('on', IDS[i]===id));
   document.getElementById('end-screen').classList.remove('open');
+  if (id === 'inperson') ph(0);
   window.scrollTo(0,0);
 }
 

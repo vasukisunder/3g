@@ -14,6 +14,8 @@
   <div id="nav-logo"><img src="logo.png" alt="3G Mentoring" id="nav-logo-img"></div>
   <button class="ntab on"  onclick="go('admin')">Partner Admin</button>
   <button class="ntab" onclick="go('inperson')">In-Person</button>
+  <span class="nav-sect-div"></span>
+  <span class="nav-sect-lbl">Virtual</span>
   <button class="ntab" onclick="go('teen')">Teen View</button>
   <button class="ntab" onclick="go('senior')">Senior View</button>
   <button class="ntab" onclick="go('child')">Child View</button>
@@ -412,6 +414,32 @@
     </div>
     <!-- RIGHT: activity picker -->
     <div class="ch-panel">
+      <svg class="ch-deco" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <!-- 4-pt star, yellow, top right -->
+        <path d="M318 28 L321 38 L331 38 L323 44 L326 54 L318 48 L310 54 L313 44 L305 38 L315 38 Z" fill="#F5C518" opacity=".5"/>
+        <!-- Circle outline, coral, top left -->
+        <circle cx="26" cy="95" r="19" fill="none" stroke="#FF9F6B" stroke-width="3" opacity=".45"/>
+        <!-- Filled dot, coral -->
+        <circle cx="26" cy="95" r="7" fill="#FF9F6B" opacity=".25"/>
+        <!-- S-curve squiggle, green, right edge -->
+        <path d="M346 170 C362 182 338 198 354 212 C370 226 346 242 354 258" stroke="#65E97B" fill="none" stroke-width="3.5" stroke-linecap="round" opacity=".55"/>
+        <!-- Small 4-pt star, purple, left mid -->
+        <path d="M22 298 L24.5 306 L32 298 L24.5 290 Z M22 298 L14 298 L22 305.5 L30 298 Z" fill="#C778E8" opacity=".4"/>
+        <!-- Dot trio, blue, left -->
+        <circle cx="18" cy="360" r="5"  fill="#40BFFF" opacity=".4"/>
+        <circle cx="30" cy="376" r="3.5" fill="#40BFFF" opacity=".3"/>
+        <circle cx="14" cy="388" r="4"  fill="#40BFFF" opacity=".25"/>
+        <!-- Wavy rainbow line, amber, lower area -->
+        <path d="M55 460 Q90 438 128 460 Q166 482 204 460 Q242 438 280 460" stroke="#F5A623" fill="none" stroke-width="3" stroke-linecap="round" opacity=".45"/>
+        <!-- Soft oval, pink, bottom right -->
+        <ellipse cx="314" cy="520" rx="32" ry="22" fill="#E8697A" opacity=".18" transform="rotate(18 314 520)"/>
+        <!-- Tiny circle, yellow, bottom left -->
+        <circle cx="52" cy="535" r="12" fill="#F5C518" opacity=".22"/>
+        <!-- Diamond, green, bottom center -->
+        <path d="M188 560 L196 574 L188 588 L180 574 Z" fill="#65E97B" opacity=".35"/>
+        <!-- Dash stroke, purple, mid right -->
+        <path d="M330 340 Q342 332 350 344" stroke="#C778E8" fill="none" stroke-width="3" stroke-linecap="round" opacity=".4"/>
+      </svg>
       <div class="ch-title">You're on! 👋</div>
       <div class="ch-sub"><span class="n-dorothy">Dorothy</span> and <span class="n-marcus">Marcus</span> can see and hear you.</div>
       <div class="ch-card">
@@ -432,6 +460,21 @@
 
 <!-- ════════════════════ REFLECTION ════════════════════ -->
 <div class="scr" id="s-reflection">
+  <!-- decorative side shapes -->
+  <div class="refl-side refl-side--l" aria-hidden="true">
+    <div class="rs rs--circle" style="width:90px;height:90px;background:rgba(64,191,255,.07);border-radius:50%;top:12%;left:-28px;"></div>
+    <div class="rs rs--ring"   style="width:52px;height:52px;border:2px solid rgba(101,233,123,.2);border-radius:50%;top:30%;left:20px;"></div>
+    <div class="rs rs--blob"   style="width:70px;height:44px;background:rgba(232,105,122,.09);border-radius:40% 60% 55% 45%;top:52%;left:-10px;transform:rotate(-15deg);"></div>
+    <div class="rs rs--circle" style="width:28px;height:28px;background:rgba(245,198,24,.18);border-radius:50%;top:70%;left:30px;"></div>
+    <div class="rs rs--ring"   style="width:80px;height:80px;border:1.5px solid rgba(199,120,232,.15);border-radius:50%;top:80%;left:-30px;"></div>
+  </div>
+  <div class="refl-side refl-side--r" aria-hidden="true">
+    <div class="rs" style="width:60px;height:60px;background:rgba(101,233,123,.08);border-radius:50%;top:15%;right:-14px;"></div>
+    <div class="rs" style="width:36px;height:36px;border:2px solid rgba(245,198,24,.22);border-radius:50%;top:36%;right:22px;"></div>
+    <div class="rs" style="width:80px;height:50px;background:rgba(64,191,255,.07);border-radius:55% 45% 40% 60%;top:56%;right:-18px;transform:rotate(12deg);"></div>
+    <div class="rs" style="width:22px;height:22px;background:rgba(232,105,122,.2);border-radius:50%;top:72%;right:28px;"></div>
+    <div class="rs" style="width:64px;height:64px;border:1.5px solid rgba(64,191,255,.12);border-radius:50%;top:82%;right:-20px;"></div>
+  </div>
   <div class="refl-banner">
     <span style="font-size:17px">👩‍🦳🧑</span>
     <span style="font-size:13px;font-weight:700;color:rgba(255,255,255,.88)"><span class="n-dorothy">Dorothy</span> & <span class="n-marcus">Marcus</span> only</span>
