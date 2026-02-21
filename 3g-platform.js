@@ -4,6 +4,7 @@ const IDS = ['admin','inperson','teen','senior','child','reflection'];
 function go(id) {
   IDS.forEach(s => document.getElementById('s-'+s).classList.toggle('on', s===id));
   document.querySelectorAll('.ntab').forEach((t,i) => t.classList.toggle('on', IDS[i]===id));
+  document.getElementById('end-screen').classList.remove('open');
   window.scrollTo(0,0);
 }
 
@@ -281,7 +282,7 @@ const PH = [
     <div class="ns-d"><span class="n-dorothy">Dorothy</span>, come with an act of kindness that moved you. <span class="n-marcus">Marcus</span> — think about how you'd explain kindness to a 6-year-old.</div>
   </div>
 </div>
-<div class="card-nav"><button class="btn-bk" onclick="ph(2)">← Back</button><button class="btn-nx" onclick="endSession()">End session ✓</button></div>`
+<div class="card-nav"><button class="btn-bk" onclick="ph(2)">← Back</button><button class="btn-nx" onclick="clickComplete(event,'endSession')">End session ✓</button></div>`
 
 ];
 
@@ -345,7 +346,7 @@ const TRIADS = [
     colorRgb: '91,187,111',
     members: [
       { name: 'Dorothy', emoji: '👩‍🦳', age: 68, bg: '#E8F5EB', cls: 'n-dorothy' },
-      { name: 'Marcus',  emoji: '🧑',   age: 16, bg: '#E8F0FB', cls: 'n-marcus'  },
+      { name: 'Marcus',  emoji: '🧑',   age: 16, bg: '#FCEAEE', cls: 'n-marcus'  },
       { name: 'Liam',    emoji: '👦',   age:  6, bg: '#FEF3E2', cls: 'n-liam'    },
     ],
     status: 'Active',
@@ -628,6 +629,54 @@ function endSession() {
   }
 
   // Timestamp
+  if (savedEl) {
+    const now = new Date();
+    savedEl.textContent = 'Saved · ' + now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+  }
+
+  screen.classList.add('open');
+  launchConfetti();
+}
+
+function clickComplete(e, fnName) {
+  const btn = e.currentTarget;
+  if (btn.classList.contains('loading')) return;
+  const original = btn.textContent;
+  btn.classList.add('loading');
+  btn.textContent = '· · ·';
+  setTimeout(() => {
+    btn.classList.remove('loading');
+    btn.textContent = original;
+    window[fnName]();
+  }, 700);
+}
+
+function endReflection() {
+  const screen  = document.getElementById('end-screen');
+  const wordsEl = document.getElementById('end-words');
+  const savedEl = document.getElementById('end-saved');
+
+  // Collect Marcus & Dorothy's one-word ritual inputs from reflection view
+  const wiInputs = document.querySelectorAll('#s-reflection .wi');
+  const people = [
+    { name: 'Marcus',  cls: 'n-marcus'  },
+    { name: 'Dorothy', cls: 'n-dorothy' },
+  ];
+
+  if (wordsEl) {
+    const filled = Array.from(wiInputs)
+      .map((inp, i) => ({ val: inp.value.trim(), ...people[i] }))
+      .filter(w => w.val);
+
+    wordsEl.innerHTML = filled.length
+      ? `<div class="ew-lbl">Your words from today</div>` +
+        `<div class="ew-chips">` +
+        filled.map(w =>
+          `<div class="ew-chip"><span class="${w.cls}">${w.name}</span> · <em>${w.val}</em></div>`
+        ).join('') + `</div>`
+      : '';
+  }
+
   if (savedEl) {
     const now = new Date();
     savedEl.textContent = 'Saved · ' + now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });

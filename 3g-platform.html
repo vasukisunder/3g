@@ -27,7 +27,7 @@
     <div class="adm-hero-left">
       <div class="adm-ey">Partner Dashboard</div>
       <div class="adm-h1">Spring 2026 Cohort</div>
-      <div class="adm-h-sub">Week 8 of 12 · 1 triad needs attention</div>
+      <div class="adm-h-sub">Week 8 of 12 · <span style="color:#FF7D5F;font-weight:600">1 triad needs attention</span></div>
     </div>
     <div class="adm-stats">
       <div class="adm-stat-item">
@@ -436,8 +436,10 @@
   </div>
   <div class="refl-body">
     <div class="refl-hd">
-      <div class="refl-ey">After the session · Teen + Senior only</div>
-      <div class="refl-t">How did that go?</div>
+      <div class="refl-hd-left">
+        <div class="refl-ey">After the session · Teen + Senior only</div>
+        <div class="refl-t">How did that go?</div>
+      </div>
       <div class="refl-s">Take a few minutes together. What you share here shapes how Session 5 is prepared — and builds the judgment you're both developing over time.</div>
     </div>
     <div class="refl-grid">
@@ -446,23 +448,28 @@
       <div class="rc"><div class="rc-lbl">For <span class="n-marcus">Marcus</span></div><div class="rc-q">Was there a moment you weren't sure what to do? What did you try?</div><textarea class="ri" placeholder="This is how judgment builds, not just following instructions..."></textarea></div>
       <div class="rc"><div class="rc-lbl">For <span class="n-dorothy">Dorothy</span></div><div class="rc-q">What did you notice about <span class="n-marcus">Marcus</span> today that you want to remember?</div><textarea class="ri" placeholder="About how he's growing, what he needs..."></textarea></div>
     </div>
-    <div class="ritual">
-      <div class="rt-tag">Closing Ritual · Every Session</div>
-      <div class="rt-t">One word each. Every time.</div>
-      <div class="rt-d">Before you go, each of you picks one word that captures today. </div>
-      <div class="wr">
-        <div class="wg"><div class="wgl"><span class="n-marcus">Marcus</span>'s word</div><input class="wi" placeholder="e.g. surprised" /></div>
-        <div class="wg"><div class="wgl"><span class="n-dorothy">Dorothy</span>'s word</div><input class="wi" placeholder="e.g. proud" /></div>
+    <div class="refl-bottom">
+      <div class="ritual" id="refl-ritual">
+        <div class="rt-tag">Closing Ritual · Every Session</div>
+        <div class="rt-t">How did today feel?</div>
+        <div class="rt-d">Before you go, each of you picks one word that captures today.</div>
+        <div class="wr">
+          <div class="wg"><div class="wgl"><span class="n-marcus">Marcus</span>'s word</div><input class="wi" placeholder="e.g. surprised" /></div>
+          <div class="wg"><div class="wgl"><span class="n-dorothy">Dorothy</span>'s word</div><input class="wi" placeholder="e.g. proud" /></div>
+        </div>
       </div>
-    </div>
-    <div class="next-b">
-      <div class="nb-icon">🤝</div>
-      <div class="nb-info">
-        <div class="nb-tag">Coming Up · Session 5</div>
-        <div class="nb-t">Try a Little Kindness</div>
-        <div class="nb-d"><span class="n-dorothy">Dorothy</span>, come with an act of kindness that moved you. <span class="n-marcus">Marcus</span> — think about how you'd explain kindness to a 6-year-old.</div>
+      <div class="refl-right-col">
+        <div class="next-b">
+          <div class="nb-icon">🤝</div>
+          <div class="nb-info">
+            <div class="nb-tag">Coming Up · Session 5</div>
+            <div class="nb-t">Try a Little Kindness</div>
+            <div class="nb-d"><span class="n-dorothy">Dorothy</span>, come with an act of kindness that moved you. <span class="n-marcus">Marcus</span> — think about how you'd explain kindness to a 6-year-old.</div>
+          </div>
+          <button class="nb-btn">Save to calendar</button>
+        </div>
+        <button class="refl-complete-btn" onclick="clickComplete(event,'endReflection')">Complete session ✓</button>
       </div>
-      <button class="nb-btn">Save to calendar</button>
     </div>
   </div>
 </div>
