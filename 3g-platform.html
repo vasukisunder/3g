@@ -49,8 +49,8 @@
   <div class="adm-body">
     <div class="adm-sb">
       <div class="sb-sec">Program</div>
-      <div class="sb-it on"><div class="sb-d" style="background:var(--grass)"></div>Triads</div>
-      <div class="sb-it"><div class="sb-d" style="background:var(--sky)"></div>Session Kits</div>
+      <div class="sb-it on" data-sec="triads" onclick="admNav('triads')"><div class="sb-d" style="background:var(--grass)"></div>Triads</div>
+      <div class="sb-it" data-sec="kits" onclick="admNav('kits')"><div class="sb-d" style="background:var(--sky)"></div>Session Kits</div>
       <div class="sb-it"><div class="sb-d" style="background:var(--sun)"></div>Schedule</div>
       <div class="sb-sec">Insights</div>
       <div class="sb-it"><div class="sb-d" style="background:var(--plum)"></div>Relationship Health</div>
@@ -60,6 +60,7 @@
       <div class="sb-it"><div class="sb-d" style="background:var(--muted)"></div>Settings</div>
     </div>
     <div class="adm-main">
+      <div id="adm-sec-triads" class="adm-sec on">
       <div class="ins"><span style="font-size:16px;flex-shrink:0">💡</span><div class="ins-t"><strong>Triad A (<span class="n-dorothy">Dorothy</span>, <span class="n-marcus">Marcus</span> & <span class="n-liam">Liam</span>)</strong> enters Session 4 today. Facilitation scaffolding has been automatically reduced — their dynamic is mature enough for open prompts.</div></div>
       <div class="ins w"><span style="font-size:16px;flex-shrink:0">⚠️</span><div class="ins-t"><strong>Triad C</strong> hasn't met in 12 days. A light check-in with the teen facilitator would help.</div></div>
       <div class="sec-t" style="margin-top:8px">Active Triads</div>
@@ -153,10 +154,21 @@
           </div>
         </div>
 
-      </div>
+      </div><!-- /hp-row -->
+      </div><!-- /adm-sec-triads -->
+      <div id="adm-sec-kits" class="adm-sec"></div>
+    </div><!-- /adm-main -->
+  </div><!-- /adm-body -->
+
+  <!-- Kit detail modal -->
+  <div class="kcm-bg" id="kcm-bg" onclick="kcmBgClick(event)">
+    <div class="kcm" id="kcm">
+      <button class="kcm-close" onclick="closeKitModal()">✕</button>
+      <div id="kcm-body"></div>
     </div>
   </div>
-</div>
+
+</div><!-- /s-admin -->
 
 
 <!-- ════════════════════ IN-PERSON ════════════════════ -->
@@ -190,7 +202,7 @@
             <div class="ovn-tags">
               <span class="ovn-tag ovn-tag--sun">desire</span>
               <span class="ovn-tag ovn-tag--plum">not yet</span>
-              <span class="ovn-tag ovn-tag--grass">growth</span>
+              <span class="ovn-tag ovn-tag--sky">growth</span>
             </div>
           </div>
           <div class="ovn-it">
@@ -206,7 +218,7 @@
             <div class="ovn-num">03</div>
             <div class="ovn-q">What changes his mind about giving up?</div>
             <div class="ovn-tags">
-              <span class="ovn-tag ovn-tag--grass">resilience</span>
+              <span class="ovn-tag ovn-tag--sky">resilience</span>
               <span class="ovn-tag ovn-tag--sun">turning point</span>
               <span class="ovn-tag ovn-tag--sky">connection</span>
             </div>
@@ -298,7 +310,7 @@
         <div style="font-size:11px;color:rgba(255,255,255,.28);line-height:1.5;margin-bottom:9px">Next phase unlocks when all three signal ready from their own screens.</div>
         <div class="pi"><div class="pav" style="background:rgba(91,187,111,.15)">👩‍🦳</div><div><div class="pn"><span class="n-dorothy">Dorothy</span></div><div class="ps" id="ps-dorothy">Waiting...</div></div><div class="psig sig-wait" id="psig-dorothy"></div></div>
         <div class="pi"><div class="pav" style="background:rgba(123,94,167,.15)">🧑</div><div><div class="pn"><span class="n-marcus">Marcus</span></div><div class="ps">You · ready</div></div><div class="psig sig-you"></div></div>
-        <div class="pi"><div class="pav" style="background:rgba(245,166,35,.15)">👦</div><div><div class="pn"><span class="n-liam">Liam</span></div><div class="ps" id="ps-liam">Waiting...</div></div><div class="psig sig-wait" id="psig-liam"></div></div>
+        <div class="pi"><div class="pav" style="background:rgba(64,191,255,.15)">👦</div><div><div class="pn"><span class="n-liam">Liam</span></div><div class="ps" id="ps-liam">Waiting...</div></div><div class="psig sig-wait" id="psig-liam"></div></div>
         <div class="rdy-advance">
           <span class="ready-count" id="ready-count">1 of 3 ready to move on</span>
           <button class="next-btn" id="next-btn" onclick="tryAdvance()">Next phase</button>
@@ -306,8 +318,8 @@
       </div>
       <div class="sw">
         <div class="sw-lbl">Session Arc</div>
-        <div class="arc-it done"><div class="arc-dot" style="background:var(--grass)"></div><div class="arc-nm">Arrival & Spark</div></div>
-        <div class="arc-it done"><div class="arc-dot" style="background:var(--grass)"></div><div class="arc-nm">Sesame Video</div></div>
+        <div class="arc-it done"><div class="arc-dot" style="background:var(--sun)"></div><div class="arc-nm">Arrival & Spark</div></div>
+        <div class="arc-it done"><div class="arc-dot" style="background:var(--sun)"></div><div class="arc-nm">Sesame Video</div></div>
         <div class="arc-it now"><div class="arc-dot" style="background:var(--sun)"></div><div class="arc-nm">Share & Connect</div></div>
         <div class="arc-it"><div class="arc-dot" style="background:rgba(255,255,255,.1)"></div><div class="arc-nm">Activity Together</div></div>
         <div class="arc-it"><div class="arc-dot" style="background:rgba(255,255,255,.1)"></div><div class="arc-nm">Closing Ritual</div></div>

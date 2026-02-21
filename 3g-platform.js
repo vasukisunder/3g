@@ -416,7 +416,7 @@ const TRIADS = [
   },
   {
     id: 'C',
-    colorRgb: '245,166,35',
+    colorRgb: '64,191,255',
     members: [
       { name: 'Ruth',  emoji: '👵', age: 70, bg: '#FFF3E0' },
       { name: 'James', emoji: '🧒', age: 15, bg: '#E8F5EB' },
@@ -642,10 +642,228 @@ function closeEndScreen() {
   go('admin');
 }
 
+/* ── ADMIN SECTION NAV ── */
+function admNav(sec) {
+  document.querySelectorAll('.adm-sb .sb-it[data-sec]').forEach(el => {
+    el.classList.toggle('on', el.dataset.sec === sec);
+  });
+  document.querySelectorAll('.adm-sec').forEach(el => el.classList.remove('on'));
+  const target = document.getElementById('adm-sec-' + sec);
+  if (target) {
+    target.classList.add('on');
+    if (sec === 'kits' && !target.dataset.rendered) {
+      renderKits();
+      target.dataset.rendered = '1';
+    }
+  }
+}
+
+/* ── SESSION KITS DATA ── */
+const KITS = [
+  {
+    num: 1, title: "Maya's Name Song", color: "var(--sun)",
+    summary: "Maya Angelou, Elmo, Carlo, and Lexi proudly sing about their names.",
+    bigIdea: "It's good to be proud of who you are, where you come from, and what you can do.",
+    emotions: ["Pride", "Confidence"],
+    triads: [{id:"A",state:"done"},{id:"B",state:"done"},{id:"C",state:"done"},{id:"D",state:""}],
+    phases: [
+      { label:"Prep", time:"20 min", items:["Talk about this first session's Big Idea — how best to welcome the child into your triad.","Watch the video before the session.","Discuss: How will you explore this material with the child?","Look over the suggestions below. Choose the ones you want to use."] },
+      { label:"Together Time", time:"20 min", items:["Greet your child by name, say your own name, and say you hope to become friends.","Write down your name, spelling it out. Ask the child to write theirs.","Play the 'Getting to Know You Game' — favorite color, favorite game.","Introduce the video: 'Today we'll see Maya, Elmo, and two kids sing about their names.'"] },
+      { label:"After the Video", time:"", items:["Sing together: 'My name is ___, it's a fine name.'","Share the name of someone in your family. Ask the child the same.","Write the first letter of that person's name together.","Close: 'I had fun with you today.' Draw a smiley face together."] },
+      { label:"Reflection", time:"20 min", items:["What went well? What might you do differently next time?","Did anything surprise you? Do you think the child learned something?","What did you learn the child is proud of? What are each of you proud of?"] }
+    ],
+    forNextTime: "The next session's video is about books. Come with the name of one of your favorite books."
+  },
+  {
+    num: 2, title: "B Is for Book", color: "var(--sky)",
+    summary: "Pharrell Williams, Elmo, and Cookie Monster sing about the power and wonder of books.",
+    bigIdea: "Reading is fun and opens a window to explore the world.",
+    emotions: ["Joy", "Curiosity", "Playfulness"],
+    triads: [{id:"A",state:"done"},{id:"B",state:"done"},{id:"C",state:"here"},{id:"D",state:""}],
+    phases: [
+      { label:"Prep", time:"20 min", items:["Watch the video before the session.","Talk about your favorite book. What did you love about it? Is reading fun for you?","Look over the suggestions below. Choose the ones you want to use."] },
+      { label:"Together Time", time:"20 min", items:["Greet your child and express how happy you are to be together again.","Talk about a story you love. Ask your child to tell you a story they really like.","Introduce the video: 'We're going to watch how Elmo and Cookie explore with books.'"] },
+      { label:"After the Video", time:"", items:["Tell a story about a trip you took. Ask the child, 'Have you ever taken a trip?'","Imagine the three of you are going on a trip together. Tell and write a story about it. 'Look! We've written a story!'","Say goodbye: 'Goodbye, storyteller!' Remind them you'll be together again soon."] },
+      { label:"Reflection", time:"20 min", items:["What went well? What could be done differently?","Did anything surprise you? What did the child learn?","What did you learn about the child — and each other? Continue talking about books you love."] }
+    ],
+    forNextTime: "The next video is about waiting. Come with a story of something you had to wait for — and how it felt."
+  },
+  {
+    num: 3, title: "The Waiting Game", color: "var(--berry)",
+    summary: "Cookie Monster plays a game where he has to wait before getting a treat.",
+    bigIdea: "Sometimes it is hard to wait for things that we want right away.",
+    emotions: ["Frustration", "Resilience"],
+    triads: [{id:"A",state:"done"},{id:"B",state:"done"},{id:"C",state:""},{id:"D",state:""}],
+    phases: [
+      { label:"Prep", time:"20 min", items:["Watch the video before the session.","Share memories of a time when it was hard to wait for something. How did it feel?","Is there anything you'd like to use from the suggestions below?"] },
+      { label:"Together Time", time:"20 min", items:["Greet your child and express how happy you are to be together.","Share a time when you had to wait for something. Discuss how it was hard.","Tell the child: 'Today's video is about waiting. Let's see what Cookie Monster has to wait for!'"] },
+      { label:"After the Video", time:"", items:["Recall something you had to wait for. Ask the senior to share. Then ask the child the same.","Play the 'Games I Like' game — share a game you like. Ask the child to draw a picture of them playing theirs.","Say goodbye and remind the child you'll be together again soon."] },
+      { label:"Reflection", time:"20 min", items:["What went well? What might you do differently?","Did anything surprise you? What did you learn about the child — and each other?","Continue sharing stories of what is hard for you to wait for."] }
+    ],
+    forNextTime: "The next video is about friendship. Come with a story about how you made a friend — or something special about one."
+  },
+  {
+    num: 4, title: "F Is for Friends", color: "var(--grass)",
+    summary: "A live-action video of friends laughing, dancing, and playing with words that begin with 'F'.",
+    bigIdea: "A friend is someone you like being with in happy and sad times.",
+    emotions: ["Happiness", "Sadness", "Love"],
+    triads: [{id:"A",state:"here"},{id:"B",state:"done"},{id:"C",state:""},{id:"D",state:""}],
+    phases: [
+      { label:"Prep", time:"20 min", items:["Watch the video before the session.","Talk to each other about one of your good friends. Describe them and what you like to do together.","Look over the suggestions below. Choose the ones you want to use."] },
+      { label:"Together Time", time:"20 min", items:["Share your story about what you like to do with a friend. Invite the child to tell a story too.","Introduce the video: 'Today we're watching a Sesame video about what friends do together.'","Ask: 'Can we be friends even if we are not the same age?'"] },
+      { label:"After the Video", time:"", items:["'In the video, I saw the children doing ___. What did you see them doing?'","Talk about how you feel when you're with your friends. Ask the child the same.","Play the 'Words That Begin with F Game' — how many words can you come up with together?"] },
+      { label:"Reflection", time:"20 min", items:["Did the child have a good friend? Did they enjoy the word game?","What went well? Is there anything you might do differently?","Ask each other: 'Do you have other friends my age?'"] }
+    ],
+    forNextTime: "The next session is about patience when learning something new. Come with a story about the first time you tried to learn something."
+  },
+  {
+    num: 5, title: "The Power of Yet", color: "var(--plum)",
+    summary: "Janelle Monae sings about how important it is to keep trying when learning to do something.",
+    bigIdea: "It takes time and practice to learn new things.",
+    emotions: ["Patience", "Mastery", "Frustration"],
+    triads: [{id:"A",state:""},{id:"B",state:"done"},{id:"C",state:""},{id:"D",state:""}],
+    phases: [
+      { label:"Prep", time:"20 min", items:["Watch the video. Share something that was hard for you to learn. How did you master it?","How will you present the idea of trying over and over to your preschooler?","Is there anything you would like to use from the suggestions below?"] },
+      { label:"Together Time", time:"20 min", items:["Greet your child and express how happy you are to be together.","Share your story about when you had to keep trying. Draw a picture of yourself as you tell it.","Introduce the video: 'It's about how sometimes everyone has to keep trying until you learn.'"] },
+      { label:"After the Video", time:"", items:["Talk about how you feel when you can't get something right.","Ask: 'How do you think Elmo, Cookie, and Grover felt when they couldn't get something right?'","Play the 'Stand on One Foot' game — all three try together. See how many times it takes to hold it for 5 seconds.","Say goodbye and remind the child you'll be together again soon."] },
+      { label:"Reflection", time:"20 min", items:["What went well? Is there anything you might do differently?","Did you learn something new about your child and each other?","Continue talking about something hard to master — or a new challenge you want to take on."] }
+    ],
+    forNextTime: "The next video is about letting go of something you love. Come with a story of something each of you found difficult to let go of."
+  },
+  {
+    num: 6, title: "Put Down the Duckie", color: "var(--sky)",
+    summary: "Hoots the Owl asks Ernie to put down his duckie so he can learn to play the saxophone.",
+    bigIdea: "Letting go of something you like is hard — especially when challenged to do something new.",
+    emotions: ["Sadness", "Discomfort", "Courage"],
+    triads: [{id:"A",state:""},{id:"B",state:"here"},{id:"C",state:""},{id:"D",state:""}],
+    phases: [
+      { label:"Prep", time:"20 min", items:["Watch the video. Talk about something you found hard to let go of.","How will you present this idea of letting go to your child?","Look over the suggestions below. Choose the ones you want to use."] },
+      { label:"Together Time", time:"20 min", items:["Greet your child and express how happy you are to be together.","Share a story about your favorite toy. Draw a picture of it. Have the child do the same.","Introduce the video: 'We're going to watch what Ernie has a hard time putting down.'"] },
+      { label:"After the Video", time:"", items:["Talk about a time it was hard to let a friend play with something you loved.","Ask: 'Why do you think Ernie had a hard time putting down his duckie?'","Play the 'Guess What I Am Feeling' game — draw a face showing what it looks like when you have to let go of something you love.","Let the child know next week is the last session. 'We will have a party to celebrate!'"] },
+      { label:"Reflection", time:"20 min", items:["What went well? Is there anything you might do differently?","Do you think the child learned something new about letting go?","Did you learn something new about your child and each other today?"] }
+    ],
+    forNextTime: "The next session is the last one. Come with a thank-you card expressing how you feel about each other and the program."
+  },
+  {
+    num: 7, title: "Try a Little Kindness", color: "var(--berry)",
+    summary: "Tory Kelly sings about kindness to Elmo, Big Bird, Grover, Abby, Cookie Monster, and all of us.",
+    bigIdea: "Kindness is a gift that brings happiness and connection to others and oneself.",
+    emotions: ["Tenderness", "Happiness", "Love"],
+    triads: [{id:"A",state:""},{id:"B",state:""},{id:"C",state:""},{id:"D",state:""}],
+    phases: [
+      { label:"Prep", time:"20 min", items:["Watch the video. Talk about how it made you feel. Share an act of kindness that moved you.","Discuss: How will you present the power of kindness to your young child?","Look over the suggestions below. Choose the ones you want to use."] },
+      { label:"Together Time", time:"20 min", items:["Share a story about when someone was kind to you. Draw what your face looked like. Show how it made you feel.","Introduce the video: 'Today we're watching a Sesame video about kindness.'"] },
+      { label:"After the Video", time:"", items:["Talk about a time you were kind to a friend and how it made you feel.","Ask: 'How were the children and the Sesame friends being kind to each other?'","Play the 'How My Heart Feels' game — draw your happy heart together.","Talk about the fun you had together in 3G."] },
+      { label:"Reflection", time:"20 min", items:["What went well? Share your thank-you cards with each other.","How do you feel now that this is your last 3G session with each other and the young child?"] }
+    ],
+    forNextTime: "Before you leave, discuss: How will you try to stay in contact with one another?"
+  },
+  {
+    num: 8, title: "Proud of You", color: "var(--sun)",
+    summary: "A special final session — no new video, just the three of you. Celebrate the journey you built together.",
+    bigIdea: "Being truly known by someone — seen across time — is one of the most powerful things there is.",
+    emotions: ["Gratitude", "Pride", "Joy", "Hope"],
+    triads: [{id:"A",state:""},{id:"B",state:""},{id:"C",state:""},{id:"D",state:""}],
+    phases: [
+      { label:"Prep", time:"20 min", items:["Come ready to share your favorite moment from across all 8 sessions.","Bring something — a drawing, a word, an object — that reminds you of your time together.","Think about what changed in you over the course of this program."] },
+      { label:"Together Time", time:"20 min", items:["Go around: share your favorite memory from the whole program. Be specific.","Write each other a note: 'What I'll remember about you is...'","Read the notes aloud together."] },
+      { label:"After the Video", time:"", items:["No video this session — the triad is the story.","Each person shares: 'When I think about what we did together, I feel ___.'","Take a photo or draw a picture of the three of you together to keep."] },
+      { label:"Reflection", time:"20 min", items:["What surprised you about each other over these 8 sessions?","What do you want to carry forward?","What do you want the others to know before you part?"] }
+    ],
+    forNextTime: "This is not goodbye — it's see you around. Find one real way to stay connected."
+  }
+];
+
+function renderKits() {
+  const container = document.getElementById('adm-sec-kits');
+  const stateLabel = { done: 'Completed', here: 'Here now', '': '' };
+  container.innerHTML = `
+    <div class="kit-header">
+      <div class="kit-header-t">Session Kits</div>
+      <div class="kit-header-s">8 sessions · The full curriculum arc, from names to kindness. Each kit adapts to where a triad is in the program.</div>
+    </div>
+    <div class="kit-grid">
+      ${KITS.map((k, i) => `
+        <div class="kit-card" onclick="openKitModal(${i})" style="--kc:${k.color}">
+          <div class="kc-num">0${k.num}</div>
+          <div class="kc-body">
+            <div class="kc-title">${k.title}</div>
+            <div class="kc-idea">${k.bigIdea}</div>
+            <div class="kc-emotions">
+              ${k.emotions.map(e => `<span class="kc-em">${e}</span>`).join('')}
+            </div>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+function openKitModal(idx) {
+  const k = KITS[idx];
+  const phaseHTML = k.phases.map(p => `
+    <div class="kph">
+      <div class="kph-hd">
+        <div class="kph-label">${p.label}</div>
+        ${p.time ? `<div class="kph-time">${p.time}</div>` : ''}
+      </div>
+      <ul class="kph-list">
+        ${p.items.map(item => `<li>${item}</li>`).join('')}
+      </ul>
+    </div>
+  `).join('');
+
+  const triadStatus = k.triads.filter(t => t.state === 'here').map(t => `Triad ${t.id}`).join(', ');
+  const completedTriads = k.triads.filter(t => t.state === 'done').map(t => `Triad ${t.id}`).join(', ');
+
+  document.getElementById('kcm-body').innerHTML = `
+    <div class="kcm-hd">
+      <div class="kcm-eyebrow" style="color:${k.color}">Session ${k.num}</div>
+      <div class="kcm-title">${k.title}</div>
+      <div class="kcm-summary">${k.summary}</div>
+    </div>
+    <div class="kcm-meta">
+      <div class="kcm-bigidea">
+        <div class="kcm-bi-lbl">Big Idea</div>
+        <div class="kcm-bi-t">${k.bigIdea}</div>
+      </div>
+      <div class="kcm-right-meta">
+        <div class="kcm-emotions">
+          ${k.emotions.map(e => `<span class="kcm-em" style="border-color:${k.color};color:${k.color}">${e}</span>`).join('')}
+        </div>
+        ${triadStatus ? `<div class="kcm-status kcm-status--here">● ${triadStatus} in this session now</div>` : ''}
+        ${completedTriads ? `<div class="kcm-status kcm-status--done">✓ Completed by ${completedTriads}</div>` : ''}
+      </div>
+    </div>
+    <div class="kcm-phases">${phaseHTML}</div>
+    <div class="kcm-fnt">
+      <div class="kcm-fnt-lbl">For Next Time</div>
+      <div class="kcm-fnt-t">${k.forNextTime}</div>
+    </div>
+  `;
+
+  const bg = document.getElementById('kcm-bg');
+  bg.classList.add('on');
+  document.addEventListener('keydown', kcmEscListener);
+}
+
+function closeKitModal() {
+  document.getElementById('kcm-bg').classList.remove('on');
+  document.removeEventListener('keydown', kcmEscListener);
+}
+
+function kcmBgClick(e) {
+  if (e.target === document.getElementById('kcm-bg')) closeKitModal();
+}
+
+function kcmEscListener(e) {
+  if (e.key === 'Escape') closeKitModal();
+}
+
 function launchConfetti() {
   const screen = document.getElementById('end-screen');
   const colors = [
-    '#F5A623', '#F5A623',          // sun (more frequent — warmest)
+    '#40BFFF', '#40BFFF',          // sun (more frequent — warmest)
     '#4ABFCE', '#5BBB6F',          // sky, grass
     '#7B5EA7', '#E05C5C',          // plum, berry
     '#FEF9F1', '#FEF9F1',          // cream specks
