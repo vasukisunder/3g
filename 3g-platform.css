@@ -4093,23 +4093,34 @@ body {
   .adm-hero {
     flex-direction: column;
     align-items: flex-start;
-    gap: 20px;
-    padding: 20px 18px;
+    gap: 12px;
+    padding: 14px 16px;
   }
 
   .adm-stats {
     width: 100%;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .adm-stat-item {
-    flex: 1 1 45%;
+    flex: 0 0 auto;
     align-items: flex-start;
-    padding: 10px 0;
+    padding: 0 14px;
   }
 
-  .adm-stat-div { display: none; }
+  .adm-stat-item:first-child { padding-left: 0; }
+
+  .adm-stat-div {
+    display: block;
+    height: 22px;
+    align-self: center;
+  }
+
+  .sn { font-size: 17px; }
+  .sl { font-size: 10px; }
 
 
   /* ── ADMIN BODY (already 1fr at 900px, just padding fix) ── */
@@ -4125,8 +4136,18 @@ body {
 
   .tc { padding: 13px 13px; }
 
-  .tc-m,
-  .tc-f { font-size: 11px; }
+  .tc-m { font-size: 11px; }
+
+  .tc-f {
+    font-size: 11px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .tc-nx { white-space: normal; }
+
+  .bg { font-size: 9.5px; }
 
 
   /* ── PROGRAM HEALTH ROW ── */
@@ -4137,7 +4158,7 @@ body {
   .kit-grid { grid-template-columns: 1fr 1fr; }
 
 
-  /* ── IN-PERSON: PHASE TABS ── */
+  /* ── IN-PERSON: PHASE TABS + CARD GRIDS ── */
   .ph-tabs {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -4148,6 +4169,16 @@ body {
   }
   .ph-tabs::-webkit-scrollbar { display: none; }
   .pht { flex-shrink: 0; }
+
+  /* Stack all multi-column phase layouts to single column */
+  .ph-2col,
+  .ph-2col--55,
+  .ph-3col {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .sh-card { padding: 20px 18px; }
 
 
   /* ── TEEN VIEW: restore hidden panels, stack layout ── */
@@ -4282,6 +4313,25 @@ body {
   .wr { flex-direction: column; }
 
   .refl-complete-btn { width: 100%; }
+
+  /* "Try a Little Kindness" coming-up card — stack on mobile */
+  .next-b {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px 16px;
+  }
+
+  .nb-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+
+  .nb-btn {
+    width: 100%;
+    text-align: center;
+  }
 
 
   /* ── KIT DETAIL MODAL (bottom sheet) ── */
