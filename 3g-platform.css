@@ -1179,8 +1179,8 @@ body {
   position: sticky;
   top: 64px;
   z-index: 100;
-  background: rgba(64,191,255,.12);
-  border-bottom: 1px solid rgba(64,191,255,.2);
+  background: #0c1f30;
+  border-bottom: 1px solid rgba(64,191,255,.18);
   padding: 9px 28px;
   display: flex;
   align-items: center;
@@ -2111,8 +2111,8 @@ body {
   position: sticky;
   top: 64px;
   z-index: 100;
-  background: rgba(123,94,167,.15);
-  border-bottom: 1px solid rgba(123,94,167,.25);
+  background: #180f28;
+  border-bottom: 1px solid rgba(123,94,167,.3);
   padding: 9px 24px;
   display: flex;
   align-items: center;
@@ -2628,8 +2628,8 @@ body {
   position: sticky;
   top: 64px;
   z-index: 100;
-  background: rgba(91,187,111,.1);
-  border-bottom: 1px solid rgba(91,187,111,.18);
+  background: #daeedd;
+  border-bottom: 1px solid rgba(91,187,111,.28);
   padding: 9px 24px;
   display: flex;
   align-items: center;
@@ -2871,8 +2871,8 @@ body {
   position: sticky;
   top: 64px;
   z-index: 100;
-  background: rgba(74,191,206,.1);
-  border-bottom: 1px solid rgba(64,191,255,.2);
+  background: #c8e6f5;
+  border-bottom: 1px solid rgba(64,191,255,.28);
   padding: 9px 24px;
   display: flex;
   align-items: center;
@@ -3122,8 +3122,8 @@ body {
   position: sticky;
   top: 64px;
   z-index: 100;
-  background: rgba(64,191,255,.09);
-  border-bottom: 1px solid rgba(74,191,206,.17);
+  background: #0d1e2a;
+  border-bottom: 1px solid rgba(74,191,206,.2);
   padding: 9px 24px;
   display: flex;
   align-items: center;
