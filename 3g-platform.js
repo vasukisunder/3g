@@ -365,8 +365,211 @@ function collapseVid(ev) {
 }
 
 
+// ── VIRTUAL SESSION PHASES ──
+// Arc dots in teen sidebar are clickable — vph(i) syncs all three virtual views.
+
+let curVph = 2;
+const VPH_COLORS = ['#F5A623', '#E05C5C', '#F07C2E', '#65E97B', '#40BFFF'];
+
+function vph(i) {
+  curVph = i;
+
+  // Update session arc dots in teen sidebar
+  document.querySelectorAll('#s-teen .arc-it').forEach((el, j) => {
+    el.className = 'arc-it' + (j < i ? ' done' : j === i ? ' now' : '');
+    const dot = el.querySelector('.arc-dot');
+    if (dot) dot.style.background = j <= i ? VPH_COLORS[j] : 'rgba(255,255,255,.1)';
+  });
+
+  // Show phase timer only during Together Time
+  const timer = document.getElementById('phase-timer');
+  if (timer) timer.style.display = i === 2 ? '' : 'none';
+
+  // Render phase content in each virtual view
+  const tpc = document.getElementById('teen-phase-content');
+  if (tpc) tpc.innerHTML = vphTeenHTML(i);
+
+  const snrCard = document.getElementById('snr-card-content');
+  if (snrCard) snrCard.innerHTML = vphSnrHTML(i);
+
+  const childContent = document.getElementById('child-phase-content');
+  if (childContent) childContent.innerHTML = vphChildHTML(i);
+}
+
+function vphTeenHTML(i) {
+  const phases = [
+    {
+      tag: 'Arrival & Spark',
+      prompt: 'Get everyone settled and set the tone.',
+      instr: `Welcome <span class="n-dorothy">Dorothy</span> and <span class="n-liam">Liam</span> by name. Check they can hear you. Then ask: <em>"How's everyone doing today?"</em> — give <span class="n-liam">Liam</span> room to answer first.`,
+      intent: `Your energy in the first 60 seconds sets the tone for the whole call. Be warm and real — <span class="n-liam">Liam</span> is reading the room before he says a word.`,
+      prev: null, next: 1
+    },
+    {
+      tag: 'Sesame Video',
+      prompt: 'Share your screen and play the video together.',
+      instr: `Hit share screen, then start the video. No talking during — let everyone watch all the way through. After it ends, <strong>pause before asking anything.</strong> Give the silence a moment to land.`,
+      intent: `The video does the heavy lifting — Elmo makes it safe to talk about frustration and trying. Don't rush past the quiet after it ends. That pause is the session working.`,
+      prev: 0, next: 2
+    },
+    {
+      tag: 'Together Time',
+      prompt: 'Share a time you had to keep trying — and how it felt to finally get it.',
+      instr: `Go first with your own story. Then invite <span class="n-dorothy">Dorothy</span>. Once she's done, bring <span class="n-liam">Liam</span> in by asking about something he's working on right now.`,
+      intent: `<span class="n-dorothy">Dorothy</span> likely has a story that will genuinely surprise <span class="n-liam">Liam</span>. Give her space. If she pauses, don't rush to fill it — silence here is the session working.`,
+      prev: 1, next: 3
+    },
+    {
+      tag: 'Activity Together',
+      prompt: 'Try it together: stand on one foot, finger on your nose.',
+      instr: `Everyone plays — including you. Count out loud: <em>"3, 2, 1, go!"</em> See how many tries before each person holds it for 5 seconds. Let yourself wobble first.`,
+      intent: `Struggling together breaks hierarchy. <span class="n-liam">Liam</span> needs to see that adults don't always get things right either. That's the whole lesson in this moment.`,
+      prev: 2, next: 4
+    },
+    {
+      tag: 'Closing Ritual',
+      prompt: 'One word from each person. Then say a real goodbye.',
+      instr: `Ask: <em>"One word — how do you feel right now? No explaining."</em> Let <span class="n-liam">Liam</span> go first, then <span class="n-dorothy">Dorothy</span>, then you. Close with: <em>"Same time next week?"</em>`,
+      intent: `Ritual endings matter as much as openings. <span class="n-liam">Liam</span> is learning how to close things warmly — by watching you do it well.`,
+      prev: 3, next: null
+    }
+  ];
+
+  const p = phases[i];
+  const navLabels = ['Arrival', 'Video', 'Share', 'Activity', 'Close'];
+  const backBtn = p.prev !== null
+    ? `<button class="tc-btn" onclick="vph(${p.prev})">← ${navLabels[p.prev]}</button>`
+    : `<button class="tc-btn" style="visibility:hidden">←</button>`;
+  const fwdBtn = p.next !== null
+    ? `<button class="tc-btn" onclick="vph(${p.next})">${navLabels[p.next]} →</button>`
+    : '';
+
+  return `
+    <div class="t-phase-tag">● ${p.tag}</div>
+    <div class="t-prompt">${p.prompt}</div>
+    <div class="t-instr">${p.instr}</div>
+    <div class="intent">
+      <div class="int-icon">🧭</div>
+      <div>
+        <div class="int-lbl">What this moment is for</div>
+        <div class="int-txt">${p.intent}</div>
+      </div>
+    </div>
+    <div class="t-ctrls">${backBtn}${fwdBtn ? `<span style="flex:1"></span>${fwdBtn}` : ''}</div>
+  `;
+}
+
+function vphSnrHTML(i) {
+  const cards = [
+    // 0: Arrival
+    `<div class="snr-g"><span class="n-marcus">Marcus</span> is getting started</div>
+     <div class="snr-q">Say hello and get settled.</div>
+     <div class="snr-ctx">This is your fourth session together. You know each other a bit now — let that show when you greet everyone.</div>
+     <button class="snr-btn" id="snr-btn" onclick="snrReady()">Ready to begin</button>`,
+    // 1: Video
+    `<div class="snr-g"><span class="n-marcus">Marcus</span> is sharing his screen</div>
+     <div class="snr-q">Watch the Sesame video together.</div>
+     <div class="snr-ctx">No need to say anything while it plays. After the video, Marcus will ask what everyone noticed. Jot down anything that sticks with you.</div>
+     <textarea class="snr-note" placeholder="Something that surprised you or stayed with you..."></textarea>`,
+    // 2: Share & Connect
+    `<div class="snr-g"><span class="n-marcus">Marcus</span> is asking everyone to share</div>
+     <div class="snr-q">Tell us about a time you had to keep trying.</div>
+     <div class="snr-ctx">Think of something that took patience. How did it feel while you were in it? How did it feel when it finally worked?</div>
+     <textarea class="snr-note" id="snr-note" placeholder="Jot something down to help you remember... (optional)"></textarea>
+     <button class="snr-btn" id="snr-btn" onclick="snrReady()">Ready to share</button>`,
+    // 3: Activity
+    `<div class="snr-g">Activity time with <span class="n-marcus">Marcus</span> & <span class="n-liam">Liam</span></div>
+     <div class="snr-q">Try the balance game together! 🦶</div>
+     <div class="snr-ctx">Stand on one foot with your finger on your nose. See how many tries before you can hold it for 5 seconds. It's encouraged — expected, even — to wobble.</div>
+     <button class="snr-btn" id="snr-btn" onclick="snrReady()">Done with the game</button>`,
+    // 4: Closing
+    `<div class="snr-g">Time to close the session</div>
+     <div class="snr-q">One word that captures how today felt.</div>
+     <div class="snr-ctx"><span class="n-marcus">Marcus</span> will go around. Just say your word out loud when it's your turn — no need to explain it.</div>
+     <textarea class="snr-note" placeholder="Your word... (e.g. hopeful, surprised, warm)"></textarea>
+     <button class="snr-btn" id="snr-btn" onclick="snrReady()">I said my word ✓</button>`
+  ];
+  return cards[i];
+}
+
+function vphChildHTML(i) {
+  const panels = [
+    // 0: Arrival
+    `<div class="ch-title">You're on! 👋</div>
+     <div class="ch-sub"><span class="n-dorothy">Dorothy</span> and <span class="n-marcus">Marcus</span> can see and hear you.</div>
+     <div class="ch-card">
+       <div class="ch-prompt-lbl">Say hello!</div>
+       <div class="ch-prompt-q">Wave to Dorothy and Marcus! 👋</div>
+       <div class="ch-reactions" id="ch-reactions">
+         <button class="ch-react" onclick="react(this,'👋')">👋</button>
+         <button class="ch-react" onclick="react(this,'😄')">😄</button>
+         <button class="ch-react" onclick="react(this,'🤩')">🤩</button>
+         <button class="ch-react" onclick="react(this,'😊')">😊</button>
+       </div>
+     </div>`,
+    // 1: Video
+    `<div class="ch-title">Watch time! 🎬</div>
+     <div class="ch-sub"><span class="n-marcus">Marcus</span> is playing a Sesame Street video!</div>
+     <div class="ch-card">
+       <div class="ch-prompt-lbl">Look at Marcus's screen</div>
+       <div class="ch-prompt-q">What do you notice? 👀</div>
+       <div class="ch-reactions" id="ch-reactions">
+         <button class="ch-react" onclick="react(this,'👀')">👀</button>
+         <button class="ch-react" onclick="react(this,'😮')">😮</button>
+         <button class="ch-react" onclick="react(this,'😂')">😂</button>
+         <button class="ch-react" onclick="react(this,'🎵')">🎵</button>
+       </div>
+     </div>`,
+    // 2: Share & Connect
+    `<div class="ch-title">You're on! 👋</div>
+     <div class="ch-sub"><span class="n-dorothy">Dorothy</span> and <span class="n-marcus">Marcus</span> can see and hear you.</div>
+     <div class="ch-card">
+       <div class="ch-prompt-lbl"><span class="n-marcus">Marcus</span> is asking:</div>
+       <div class="ch-prompt-q">"What's something you're working really hard on?"</div>
+       <div class="ch-reactions" id="ch-reactions">
+         <button class="ch-react" onclick="react(this,'😄')">😄</button>
+         <button class="ch-react" onclick="react(this,'🤔')">🤔</button>
+         <button class="ch-react" onclick="react(this,'👍')">👍</button>
+         <button class="ch-react" onclick="react(this,'🙋')">🙋</button>
+       </div>
+     </div>
+     <button class="ch-share-btn" id="ch-share-btn" onclick="childReady()">I'm done talking ✓</button>`,
+    // 3: Activity
+    `<div class="ch-title">Game time! 🦶</div>
+     <div class="ch-sub">Can you balance on one foot?</div>
+     <div class="ch-card">
+       <div class="ch-prompt-lbl">Try the balance challenge!</div>
+       <div class="ch-prompt-q">One foot + finger on nose. How long can you hold it? 🤪</div>
+       <div class="ch-reactions" id="ch-reactions">
+         <button class="ch-react" onclick="react(this,'🦶')">🦶</button>
+         <button class="ch-react" onclick="react(this,'😤')">😤</button>
+         <button class="ch-react" onclick="react(this,'🎉')">🎉</button>
+         <button class="ch-react" onclick="react(this,'😂')">😂</button>
+       </div>
+     </div>
+     <button class="ch-share-btn" id="ch-share-btn" onclick="childReady()">I did it! ✓</button>`,
+    // 4: Closing
+    `<div class="ch-title">Great session! 🌟</div>
+     <div class="ch-sub">Say goodbye to <span class="n-dorothy">Dorothy</span> and <span class="n-marcus">Marcus</span>!</div>
+     <div class="ch-card">
+       <div class="ch-prompt-lbl">How do you feel right now?</div>
+       <div class="ch-prompt-q">Pick one!</div>
+       <div class="ch-reactions" id="ch-reactions">
+         <button class="ch-react" onclick="react(this,'😄')">😄 Happy</button>
+         <button class="ch-react" onclick="react(this,'🥹')">🥹 Proud</button>
+         <button class="ch-react" onclick="react(this,'😊')">😊 Good</button>
+         <button class="ch-react" onclick="react(this,'🤩')">🤩 Amazing</button>
+       </div>
+     </div>
+     <button class="ch-share-btn" id="ch-share-btn" onclick="childReady()">Goodbye! 👋</button>`
+  ];
+  return panels[i];
+}
+
+
 // ── INIT — start on Watch Together so the video is immediately visible ──
 ph(1);
+vph(2);
 
 
 // ── TRIAD DETAIL MODAL ──

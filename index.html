@@ -255,19 +255,7 @@
         </div>
         <button class="tc-btn tc-slow" id="slow-btn" onclick="toggleSlow()">⏸ Slow down</button>
       </div>
-      <div class="t-phase-tag">● Together Time</div>
-      <div class="t-prompt">Share a time you had to keep trying — and how it felt to finally get it.</div>
-      <div class="t-instr">Go first with your own story. Then invite <span class="n-dorothy">Dorothy</span>. Once she's done, bring <span class="n-liam">Liam</span> in by asking about something he's working on right now.</div>
-      <div class="intent">
-        <div class="int-icon">🧭</div>
-        <div>
-          <div class="int-lbl">What this moment is for</div>
-          <div class="int-txt"><span class="n-dorothy">Dorothy</span> likely has a story that will genuinely surprise <span class="n-liam">Liam</span>. Give her space. If she pauses, don't rush to fill it — silence here is the session working.</div>
-        </div>
-      </div>
-      <div class="t-ctrls">
-        <button class="tc-btn" onclick="prevPhase()">← Previous phase</button>
-      </div>
+      <div id="teen-phase-content"></div>
     </div>
 
     <!-- CENTER: video call -->
@@ -323,11 +311,11 @@
       </div>
       <div class="sw">
         <div class="sw-lbl">Session Arc</div>
-        <div class="arc-it done"><div class="arc-dot" style="background:#F5A623"></div><div class="arc-nm">Arrival & Spark</div></div>
-        <div class="arc-it done"><div class="arc-dot" style="background:#E05C5C"></div><div class="arc-nm">Sesame Video</div></div>
-        <div class="arc-it now"><div class="arc-dot" style="background:#F07C2E"></div><div class="arc-nm">Share & Connect</div></div>
-        <div class="arc-it"><div class="arc-dot" style="background:rgba(255,255,255,.1)"></div><div class="arc-nm">Activity Together</div></div>
-        <div class="arc-it"><div class="arc-dot" style="background:rgba(255,255,255,.1)"></div><div class="arc-nm">Closing Ritual</div></div>
+        <div class="arc-it done" onclick="vph(0)"><div class="arc-dot" style="background:#F5A623"></div><div class="arc-nm">Arrival & Spark</div></div>
+        <div class="arc-it done" onclick="vph(1)"><div class="arc-dot" style="background:#E05C5C"></div><div class="arc-nm">Sesame Video</div></div>
+        <div class="arc-it now"  onclick="vph(2)"><div class="arc-dot" style="background:#F07C2E"></div><div class="arc-nm">Share & Connect</div></div>
+        <div class="arc-it"      onclick="vph(3)"><div class="arc-dot" style="background:rgba(255,255,255,.1)"></div><div class="arc-nm">Activity Together</div></div>
+        <div class="arc-it"      onclick="vph(4)"><div class="arc-dot" style="background:rgba(255,255,255,.1)"></div><div class="arc-nm">Closing Ritual</div></div>
       </div>
       <div class="sw">
         <div class="sw-lbl">Pacing</div>
@@ -375,13 +363,7 @@
         <div class="ts-sep">✦</div>
         <div class="ts-m"><div class="ts-av" style="background:#FEF3E2">👦</div><div class="ts-nm"><span class="n-liam">Liam</span></div><div class="ts-st"></div></div>
       </div>
-      <div class="snr-card">
-        <div class="snr-g"><span class="n-marcus">Marcus</span> is asking everyone to share</div>
-        <div class="snr-q">Tell us about a time you had to keep trying.</div>
-        <div class="snr-ctx">Think of something that took patience. How did it feel while you were in it? How did it feel when it finally worked?</div>
-        <textarea class="snr-note" id="snr-note" placeholder="Jot something down to help you remember... (optional)"></textarea>
-        <button class="snr-btn" id="snr-btn" onclick="snrReady()">Ready to share</button>
-      </div>
+      <div class="snr-card" id="snr-card-content"></div>
     </div>
   </div>
 </div>
@@ -440,19 +422,7 @@
         <!-- Dash stroke, purple, mid right -->
         <path d="M330 340 Q342 332 350 344" stroke="#C778E8" fill="none" stroke-width="3" stroke-linecap="round" opacity=".4"/>
       </svg>
-      <div class="ch-title">You're on! 👋</div>
-      <div class="ch-sub"><span class="n-dorothy">Dorothy</span> and <span class="n-marcus">Marcus</span> can see and hear you.</div>
-      <div class="ch-card">
-        <div class="ch-prompt-lbl"><span class="n-marcus">Marcus</span> is asking:</div>
-        <div class="ch-prompt-q">"What's something you're working really hard on?"</div>
-        <div class="ch-reactions" id="ch-reactions">
-          <button class="ch-react" onclick="react(this,'😄')">😄</button>
-          <button class="ch-react" onclick="react(this,'🤔')">🤔</button>
-          <button class="ch-react" onclick="react(this,'👍')">👍</button>
-          <button class="ch-react" onclick="react(this,'🙋')">🙋</button>
-        </div>
-      </div>
-      <button class="ch-share-btn" id="ch-share-btn" onclick="childReady()">I'm done talking ✓</button>
+      <div id="child-phase-content"></div>
     </div>
   </div>
 </div>

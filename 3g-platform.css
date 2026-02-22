@@ -1821,9 +1821,9 @@ body {
 
 /* Facilitator prep note (Arrival) — full-width, above the grid */
 .fac-prep {
-  background: rgba(232,105,122,.05);
-  border: 1px solid rgba(232,105,122,.15);
-  border-left: 3px solid #E8697A;
+  background: rgba(123,94,167,.06);
+  border: 1px solid rgba(123,94,167,.18);
+  border-left: 3px solid var(--plum);
   border-radius: 0 10px 10px 0;
   padding: 11px 14px;
   margin-bottom: 14px;
@@ -1834,7 +1834,7 @@ body {
   font-weight: 700;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: #E8697A;
+  color: var(--plum);
   margin-bottom: 5px;
 }
 
@@ -1865,7 +1865,6 @@ body {
 .vid-about-note {
   font-family: 'Fraunces', serif;
   font-size: 13px;
-  font-style: italic;
   line-height: 1.52;
   color: var(--ink);
   opacity: .78;
@@ -2225,6 +2224,23 @@ body {
   color: #F5A623;
 }
 
+/* Dynamic virtual phase content containers */
+#teen-phase-content {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  flex: 1;
+  min-height: 0;
+}
+
+#child-phase-content {
+  display: contents; /* children appear as direct ch-panel children for z-index/spacing */
+}
+
+.snr-card#snr-card-content {
+  flex: 1;
+}
+
 .t-phase-tag {
   display: inline-flex;
   align-items: center;
@@ -2519,10 +2535,14 @@ body {
   padding: 5px 7px;
   border-radius: 6px;
   margin-bottom: 2px;
+  cursor: pointer;
+  transition: background .12s;
 }
 
-.arc-it.done { opacity: .3; }
-.arc-it.now  { background: rgba(255,255,255,.05); }
+.arc-it:hover { background: rgba(255,255,255,.07); }
+.arc-it.done  { opacity: .35; }
+.arc-it.done:hover { opacity: .7; }
+.arc-it.now   { background: rgba(255,255,255,.05); }
 
 .arc-dot {
   width: 6px;
