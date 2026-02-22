@@ -608,8 +608,8 @@ const TRIADS = [
       text: "Facilitation scaffolding has been automatically reduced for Session 4 — this triad's dynamic is mature enough for open prompts. Marcus is advancing phases faster each session, a strong sign of growing confidence.",
     },
     reflections: [
-      { author: 'Marcus',  cls: 'n-marcus',  quote: "I didn't expect Dorothy to have a story like that. It made me think differently about what hard actually means." },
-      { author: 'Dorothy', cls: 'n-dorothy', quote: "Watching Marcus pause for Liam and not rush to fill the silence — that's real patience. He's learning something I couldn't have taught him directly." },
+      { author: 'Marcus',  cls: 'n-marcus',  quote: "I didn't expect Dorothy to have a story like that... it made me think differently about what hard actually means." },
+      { author: 'Dorothy', cls: 'n-dorothy', quote: "Watching Marcus pause for Liam and not rush to fill the silence shows real patience. He's learning something I couldn't have taught him directly." },
     ],
   },
   {

@@ -366,9 +366,12 @@ body {
   background: var(--cream);
   height: 100vh;
   overflow: hidden;
-  display: flex;
   flex-direction: column;
   box-sizing: border-box;
+}
+
+#s-admin.on {
+  display: flex;
 }
 
 .adm-hero {
@@ -1111,12 +1114,28 @@ body {
   text-align: right;
 }
 
-/* Tooltip */
-.tip {
+/* Tooltip — triggered only by the ? badge */
+.tip-q {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: rgba(0,0,0,.07);
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--muted);
+  cursor: help;
+  margin-left: 5px;
   position: relative;
+  vertical-align: middle;
+  flex-shrink: 0;
+  line-height: 1;
+  user-select: none;
 }
 
-.tip .tt {
+.tip-q .tt {
   display: none;
   position: absolute;
   bottom: calc(100% + 8px);
@@ -1131,9 +1150,10 @@ body {
   color: rgba(255,255,255,.6);
   line-height: 1.55;
   box-shadow: 0 8px 24px rgba(0,0,0,.4);
+  pointer-events: none;
 }
 
-.tip:hover .tt {
+.tip-q:hover .tt {
   display: block;
 }
 
@@ -1144,12 +1164,6 @@ body {
   text-transform: uppercase;
   color: var(--sky);
   margin-bottom: 5px;
-}
-
-.tip .hl {
-  text-decoration: underline dotted;
-  text-underline-offset: 3px;
-  cursor: help;
 }
 
 
@@ -3124,14 +3138,11 @@ body {
 }
 
 .refl-hd {
-  display: flex;
-  align-items: flex-start;
-  gap: 48px;
-  margin-bottom: 20px;
+  margin-bottom: 26px;
 }
 
 .refl-hd-left {
-  flex-shrink: 0;
+  margin-bottom: 10px;
 }
 
 .refl-ey {
@@ -3161,9 +3172,7 @@ body {
   font-size: 13px;
   color: rgba(255,255,255,.36);
   line-height: 1.6;
-  flex: 1;
-  padding-top: 14px;
-  max-width: 420px;
+  max-width: 540px;
 }
 
 .refl-grid {
@@ -3637,7 +3646,13 @@ body {
 .tcm-arc-it.current .tcm-arc-dot {
   background: var(--sun);
   color: var(--ink);
-  box-shadow: 0 0 0 5px rgba(64,191,255,.18);
+  animation: ring-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes ring-pulse {
+  0%   { box-shadow: 0 0 0 3px rgba(64,191,255,.28); }
+  55%  { box-shadow: 0 0 0 9px rgba(64,191,255,.05); }
+  100% { box-shadow: 0 0 0 3px rgba(64,191,255,.28); }
 }
 
 .tcm-arc-it.upcoming .tcm-arc-dot {
@@ -4325,14 +4340,11 @@ body {
   }
 
   .refl-hd {
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 14px;
+    margin-bottom: 16px;
   }
 
   .refl-s {
     max-width: 100%;
-    padding-top: 0;
   }
 
   .refl-t { font-size: 22px; }
