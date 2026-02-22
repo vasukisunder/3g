@@ -364,16 +364,22 @@ body {
 
 #s-admin {
   background: var(--cream);
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
 }
 
 .adm-hero {
   background: #111;
-  padding: 36px 36px;
+  padding: 28px 36px 28px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid rgba(255,255,255,.07);
   position: relative;
+  flex-shrink: 0;
 }
 
 .adm-hero-left {
@@ -443,7 +449,9 @@ body {
 .adm-body {
   display: grid;
   grid-template-columns: 240px 1fr;
-  min-height: calc(100vh - 136px);
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
 }
 
 /* ── ADMIN SECTION SWITCHING ── */
@@ -454,6 +462,7 @@ body {
   background: var(--soft);
   padding: 22px 14px;
   border-right: 1px solid rgba(0,0,0,.07);
+  overflow-y: auto;
 }
 
 
@@ -812,6 +821,8 @@ body {
 
 .adm-main {
   padding: 30px 38px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .sec-t {
@@ -3406,7 +3417,7 @@ body {
   position: fixed;
   inset: 0;
   background: rgba(10, 8, 6, 0.52);
-  z-index: 900;
+  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;

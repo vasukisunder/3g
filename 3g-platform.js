@@ -756,7 +756,7 @@ function openTriadModal(idx) {
   // Session arc
   const arcHTML = t.sessions.map(s => {
     const dotStyle = s.state === 'done'
-      ? `style="background:rgba(${t.colorRgb},1);color:#fff"`
+      ? `style="background:#5BBB6F;color:#fff"`
       : '';
     const dotLabel = s.state === 'done' ? '✓' : s.num;
     return `<div class="tcm-arc-it ${s.state}">
