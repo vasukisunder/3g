@@ -793,13 +793,6 @@ function openTriadModal(idx) {
     </div>`;
   }
 
-  // Actions
-  const actHTML = `<div class="tcm-actions">
-    <button class="tcm-act-btn primary" onclick="closeTriadModal();go('teen')">Open teen view</button>
-    <button class="tcm-act-btn">Send check-in</button>
-    <button class="tcm-act-btn">Download report</button>
-  </div>`;
-
   document.getElementById('tcm-body').innerHTML = `
     <div class="tcm-sec">
       <div class="tcm-sec-lbl">Session Arc</div>
@@ -810,7 +803,6 @@ function openTriadModal(idx) {
       ${healthHTML}
     </div>
     ${reflHTML}
-    ${actHTML}
   `;
 
   bg.classList.add('open');
