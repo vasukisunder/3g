@@ -936,7 +936,7 @@ function admNav(sec) {
 /* ── SESSION KITS DATA ── */
 const KITS = [
   {
-    num: 1, title: "Maya's Name Song", color: "var(--sun)",
+    num: 1, title: "Maya's Name Song", color: "#F5A623",
     summary: "Maya Angelou, Elmo, Carlo, and Lexi proudly sing about their names.",
     bigIdea: "It's good to be proud of who you are, where you come from, and what you can do.",
     emotions: ["Pride", "Confidence"],
@@ -950,7 +950,7 @@ const KITS = [
     forNextTime: "The next session's video is about books. Come with the name of one of your favorite books."
   },
   {
-    num: 2, title: "B Is for Book", color: "var(--sky)",
+    num: 2, title: "B Is for Book", color: "#4ABFCE",
     summary: "Pharrell Williams, Elmo, and Cookie Monster sing about the power and wonder of books.",
     bigIdea: "Reading is fun and opens a window to explore the world.",
     emotions: ["Joy", "Curiosity", "Playfulness"],
@@ -964,7 +964,7 @@ const KITS = [
     forNextTime: "The next video is about waiting. Come with a story of something you had to wait for — and how it felt."
   },
   {
-    num: 3, title: "The Waiting Game", color: "var(--berry)",
+    num: 3, title: "The Waiting Game", color: "#E05C5C",
     summary: "Cookie Monster plays a game where he has to wait before getting a treat.",
     bigIdea: "Sometimes it is hard to wait for things that we want right away.",
     emotions: ["Frustration", "Resilience"],
@@ -978,7 +978,7 @@ const KITS = [
     forNextTime: "The next video is about friendship. Come with a story about how you made a friend — or something special about one."
   },
   {
-    num: 4, title: "F Is for Friends", color: "var(--grass)",
+    num: 4, title: "F Is for Friends", color: "#5BBB6F",
     summary: "A live-action video of friends laughing, dancing, and playing with words that begin with 'F'.",
     bigIdea: "A friend is someone you like being with in happy and sad times.",
     emotions: ["Happiness", "Sadness", "Love"],
@@ -992,7 +992,7 @@ const KITS = [
     forNextTime: "The next session is about patience when learning something new. Come with a story about the first time you tried to learn something."
   },
   {
-    num: 5, title: "The Power of Yet", color: "var(--plum)",
+    num: 5, title: "The Power of Yet", color: "#7B5EA7",
     summary: "Janelle Monae sings about how important it is to keep trying when learning to do something.",
     bigIdea: "It takes time and practice to learn new things.",
     emotions: ["Patience", "Mastery", "Frustration"],
@@ -1006,7 +1006,7 @@ const KITS = [
     forNextTime: "The next video is about letting go of something you love. Come with a story of something each of you found difficult to let go of."
   },
   {
-    num: 6, title: "Put Down the Duckie", color: "var(--sky)",
+    num: 6, title: "Put Down the Duckie", color: "#FF7D5F",
     summary: "Hoots the Owl asks Ernie to put down his duckie so he can learn to play the saxophone.",
     bigIdea: "Letting go of something you like is hard — especially when challenged to do something new.",
     emotions: ["Sadness", "Discomfort", "Courage"],
@@ -1020,7 +1020,7 @@ const KITS = [
     forNextTime: "The next session is the last one. Come with a thank-you card expressing how you feel about each other and the program."
   },
   {
-    num: 7, title: "Try a Little Kindness", color: "var(--berry)",
+    num: 7, title: "Try a Little Kindness", color: "#40BFFF",
     summary: "Tory Kelly sings about kindness to Elmo, Big Bird, Grover, Abby, Cookie Monster, and all of us.",
     bigIdea: "Kindness is a gift that brings happiness and connection to others and oneself.",
     emotions: ["Tenderness", "Happiness", "Love"],
@@ -1034,7 +1034,7 @@ const KITS = [
     forNextTime: "Before you leave, discuss: How will you try to stay in contact with one another?"
   },
   {
-    num: 8, title: "Proud of You", color: "var(--sun)",
+    num: 8, title: "Proud of You", color: "#E8697A",
     summary: "A special final session — no new video, just the three of you. Celebrate the journey you built together.",
     bigIdea: "Being truly known by someone — seen across time — is one of the most powerful things there is.",
     emotions: ["Gratitude", "Pride", "Joy", "Hope"],
