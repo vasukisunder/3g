@@ -46,9 +46,9 @@ function renderTimer() {
   const fill = document.getElementById('pt-fill');
   if (!val || !fill) return;
   val.textContent = fmt(secs);
-  const pct = (secs / TOTAL) * 100;
+  const pct = ((TOTAL - secs) / TOTAL) * 100;  // elapsed %
   fill.style.width = pct + '%';
-  fill.className = 'pt-fill' + (pct < 25 ? ' urgent' : pct < 40 ? ' warn' : '');
+  fill.className = 'pt-fill' + (pct > 80 ? ' urgent' : pct > 60 ? ' warn' : '');
 }
 
 function toggleSlow() {
@@ -916,6 +916,28 @@ function closeEndScreen() {
   document.getElementById('end-screen').classList.remove('open');
   go('admin');
 }
+
+/* ── PARTNER ONBOARDING CHECKLIST ── */
+const obDone = { 1: false, 2: false, 3: false, 4: false };
+const OB_CIRCUMFERENCE = 2 * Math.PI * 18; // r=18 → ~113
+
+function obCheck(n) {
+  obDone[n] = !obDone[n];
+  const item = document.getElementById('ob-ci-' + n);
+  if (item) item.classList.toggle('done', obDone[n]);
+
+  const completed = Object.values(obDone).filter(Boolean).length;
+  const numEl = document.querySelector('.ob-ring-n');
+  if (numEl) numEl.textContent = completed;
+
+  const arc = document.querySelector('.ob-ring-svg circle:last-child');
+  if (arc) {
+    const offset = OB_CIRCUMFERENCE - (completed / 4) * OB_CIRCUMFERENCE;
+    arc.style.transition = 'stroke-dashoffset .4s cubic-bezier(.4,0,.2,1)';
+    arc.setAttribute('stroke-dashoffset', offset);
+  }
+}
+
 
 /* ── ADMIN SECTION NAV ── */
 function admNav(sec) {

@@ -50,6 +50,8 @@
   </div>
   <div class="adm-body">
     <div class="adm-sb">
+      <div class="sb-sec">Getting Started</div>
+      <div class="sb-it" data-sec="onboarding" onclick="admNav('onboarding')"><div class="sb-d" style="background:#FF7D5F"></div>Partner Onboarding</div>
       <div class="sb-sec">Program</div>
       <div class="sb-it on" data-sec="triads" onclick="admNav('triads')"><div class="sb-d" style="background:var(--grass)"></div>Triads</div>
       <div class="sb-it" data-sec="kits" onclick="admNav('kits')"><div class="sb-d" style="background:var(--sky)"></div>Session Kits</div>
@@ -154,6 +156,245 @@
       </div><!-- /hp-row -->
       </div><!-- /adm-sec-triads -->
       <div id="adm-sec-kits" class="adm-sec"></div>
+
+      <div id="adm-sec-onboarding" class="adm-sec">
+
+        <!-- Hero -->
+        <div class="ob-hero">
+          <div class="ob-hero-text">
+            <div class="ob-hero-eyebrow">Partner onboarding</div>
+            <div class="ob-hero-h">Welcome to 3G.<br>You're ready to begin.</div>
+            <div class="ob-hero-s">The platform runs facilitation so you can focus on your people. Set up your cohort in four steps — after that, your first triad can run Session 1 without you in the room.</div>
+          </div>
+          <div class="ob-hero-stats">
+            <div class="ob-hs">
+              <span class="ob-hs-n">8</span>
+              <span class="ob-hs-l">sessions per cohort</span>
+            </div>
+            <div class="ob-hs-div"></div>
+            <div class="ob-hs">
+              <span class="ob-hs-n">5</span>
+              <span class="ob-hs-l">phases per session</span>
+            </div>
+            <div class="ob-hs-div"></div>
+            <div class="ob-hs">
+              <span class="ob-hs-n">~60</span>
+              <span class="ob-hs-l">min per session</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Setup checklist -->
+        <div class="ob-cl-section">
+          <div class="ob-cl-header">
+            <div>
+              <div class="ob-sec-lbl">Setup checklist</div>
+              <div class="ob-sec-title">Four things before Session 1</div>
+            </div>
+            <div class="ob-progress-ring">
+              <svg viewBox="0 0 44 44" class="ob-ring-svg">
+                <circle cx="22" cy="22" r="18" fill="none" stroke="rgba(0,0,0,.07)" stroke-width="3.5"/>
+                <circle cx="22" cy="22" r="18" fill="none" stroke="#FF7D5F" stroke-width="3.5"
+                  stroke-dasharray="113" stroke-dashoffset="113" stroke-linecap="round"
+                  transform="rotate(-90 22 22)"/>
+              </svg>
+              <div class="ob-ring-label">
+                <div class="ob-ring-n">0</div>
+                <div class="ob-ring-s">of 4</div>
+              </div>
+            </div>
+          </div>
+          <div class="ob-checklist">
+
+            <div class="ob-ci" id="ob-ci-1">
+              <div class="ob-ci-left">
+                <div class="ob-ci-check" onclick="obCheck(1)"></div>
+                <div class="ob-ci-num">01</div>
+              </div>
+              <div class="ob-ci-body">
+                <div class="ob-ci-t">Add participants</div>
+                <div class="ob-ci-d">Recruit one teen (14–17), one senior (65+), and one child (6–8) for each triad. You can add participants individually and match them in the next step.</div>
+              </div>
+              <button class="ob-ci-btn">Add participants →</button>
+            </div>
+
+            <div class="ob-ci" id="ob-ci-2">
+              <div class="ob-ci-left">
+                <div class="ob-ci-check" onclick="obCheck(2)"></div>
+                <div class="ob-ci-num">02</div>
+              </div>
+              <div class="ob-ci-body">
+                <div class="ob-ci-t">Create a triad</div>
+                <div class="ob-ci-d">Match one teen, one senior, and one child. Each triad runs its own 8-session arc — sessions, health scores, and reflections are tracked independently.</div>
+              </div>
+              <button class="ob-ci-btn" onclick="admNav('triads')">Go to Triads →</button>
+            </div>
+
+            <div class="ob-ci" id="ob-ci-3">
+              <div class="ob-ci-left">
+                <div class="ob-ci-check" onclick="obCheck(3)"></div>
+                <div class="ob-ci-num">03</div>
+              </div>
+              <div class="ob-ci-body">
+                <div class="ob-ci-t">Set a schedule</div>
+                <div class="ob-ci-d">Weekly or biweekly, in-person or virtual. Each triad can run on its own cadence — the platform tracks each one separately.</div>
+              </div>
+              <button class="ob-ci-btn">Set schedule →</button>
+            </div>
+
+            <div class="ob-ci" id="ob-ci-4">
+              <div class="ob-ci-left">
+                <div class="ob-ci-check" onclick="obCheck(4)"></div>
+                <div class="ob-ci-num">04</div>
+              </div>
+              <div class="ob-ci-body">
+                <div class="ob-ci-t">Share session links</div>
+                <div class="ob-ci-d">Each participant gets a personal link — teen, senior, or child view. For in-person sessions, one shared device at the table runs the session screen.</div>
+              </div>
+              <button class="ob-ci-btn">Share links →</button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- What the platform handles -->
+        <div class="ob-sec-lbl ob-sec-lbl-spaced">What the platform handles for you</div>
+        <div class="ob-platform-row">
+          <div class="ob-platform-card">
+            <div class="ob-pc-icon" style="background:#EBF8EF">🎯</div>
+            <div class="ob-pc-t">Session facilitation</div>
+            <div class="ob-pc-d">Each session follows a structured 5-phase arc. Prompts, transitions, and timing are built in — no facilitator needed in the room.</div>
+          </div>
+          <div class="ob-platform-card">
+            <div class="ob-pc-icon" style="background:#FFF4EB">📊</div>
+            <div class="ob-pc-t">Health &amp; continuity tracking</div>
+            <div class="ob-pc-d">The platform monitors session consistency, reflection quality, and relationship depth across every triad — and surfaces risks before they become problems.</div>
+          </div>
+          <div class="ob-platform-card">
+            <div class="ob-pc-icon" style="background:#EBF3FF">💬</div>
+            <div class="ob-pc-t">Reflection &amp; memory</div>
+            <div class="ob-pc-d">After each session, the teen and senior reflect together. Their responses shape the next session and build a shared history over the full cohort.</div>
+          </div>
+        </div>
+
+        <!-- Session arc -->
+        <div class="ob-sec-lbl ob-sec-lbl-spaced">How a session works — the 5-phase arc</div>
+        <div class="ob-arc">
+          <div class="ob-arc-it">
+            <div class="ob-arc-dot" style="background:#FF7D5F">1</div>
+            <div class="ob-arc-conn"></div>
+            <div class="ob-arc-ph">Arrival</div>
+            <div class="ob-arc-time">5 min</div>
+            <div class="ob-arc-desc">Settle in. The platform opens the session and introduces the day's theme.</div>
+          </div>
+          <div class="ob-arc-it">
+            <div class="ob-arc-dot" style="background:#F5A623">2</div>
+            <div class="ob-arc-conn"></div>
+            <div class="ob-arc-ph">Connection</div>
+            <div class="ob-arc-time">10 min</div>
+            <div class="ob-arc-desc">A warm-up prompt brings the three generations into conversation before the activity.</div>
+          </div>
+          <div class="ob-arc-it">
+            <div class="ob-arc-dot" style="background:#40BFFF">3</div>
+            <div class="ob-arc-conn"></div>
+            <div class="ob-arc-ph">Activity</div>
+            <div class="ob-arc-time">25 min</div>
+            <div class="ob-arc-desc">The core of the session. Structured, generation-specific roles that create real interaction.</div>
+          </div>
+          <div class="ob-arc-it">
+            <div class="ob-arc-dot" style="background:#5BBB6F">4</div>
+            <div class="ob-arc-conn"></div>
+            <div class="ob-arc-ph">Reflection</div>
+            <div class="ob-arc-time">15 min</div>
+            <div class="ob-arc-desc">Teen and senior reflect together. Responses are saved and shape the next session.</div>
+          </div>
+          <div class="ob-arc-it ob-arc-last">
+            <div class="ob-arc-dot" style="background:#7B5EA7">5</div>
+            <div class="ob-arc-ph">Close</div>
+            <div class="ob-arc-time">5 min</div>
+            <div class="ob-arc-desc">A brief ritual to end the session. Builds continuity and a sense of shared rhythm.</div>
+          </div>
+        </div>
+
+        <!-- Session formats + Who handles what -->
+        <div class="ob-two-col">
+          <div>
+            <div class="ob-sec-lbl ob-sec-lbl-spaced">Session formats</div>
+            <div class="ob-modes">
+              <div class="ob-mode">
+                <div class="ob-mode-icon">🏠</div>
+                <div class="ob-mode-t">In-person</div>
+                <div class="ob-mode-d">One shared device at the table. The platform guides the flow — participants just follow along. No facilitator required once the session starts.</div>
+              </div>
+              <div class="ob-mode">
+                <div class="ob-mode-icon">💻</div>
+                <div class="ob-mode-t">Virtual</div>
+                <div class="ob-mode-d">Each participant joins from their own device with a personalized view. Activities and timing sync automatically across all three screens.</div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="ob-sec-lbl ob-sec-lbl-spaced">Who handles what</div>
+            <div class="ob-resp">
+              <div class="ob-resp-col">
+                <div class="ob-resp-head" style="color:#FF7D5F">Your role</div>
+                <ul class="ob-resp-list">
+                  <li>Recruit teen, senior, and child participants</li>
+                  <li>Create triads and set schedules</li>
+                  <li>Share session links with each participant</li>
+                  <li>Monitor triad health from this dashboard</li>
+                  <li>Reach out to 3G if a triad needs support</li>
+                </ul>
+              </div>
+              <div class="ob-resp-col">
+                <div class="ob-resp-head" style="color:#40BFFF">Platform handles</div>
+                <ul class="ob-resp-list">
+                  <li>All in-session facilitation and transitions</li>
+                  <li>Session arc across all 8 sessions</li>
+                  <li>Reflection capture between sessions</li>
+                  <li>Health scoring and risk flagging</li>
+                  <li>Personalized views for each generation</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Explore the platform -->
+        <div class="ob-sec-lbl ob-sec-lbl-spaced">Explore the platform</div>
+        <div class="ob-quick">
+          <button class="ob-quick-btn" onclick="admNav('kits')">
+            <span class="ob-qb-icon">📋</span>
+            <div>
+              <div class="ob-qb-t">Session Kits</div>
+              <div class="ob-qb-s">Preview all 8 sessions</div>
+            </div>
+          </button>
+          <button class="ob-quick-btn" onclick="go('inperson')">
+            <span class="ob-qb-icon">▶</span>
+            <div>
+              <div class="ob-qb-t">Try a demo session</div>
+              <div class="ob-qb-s">See the in-person view</div>
+            </div>
+          </button>
+          <button class="ob-quick-btn" onclick="go('teen')">
+            <span class="ob-qb-icon">🧑</span>
+            <div>
+              <div class="ob-qb-t">Teen view</div>
+              <div class="ob-qb-s">What your teen sees</div>
+            </div>
+          </button>
+          <button class="ob-quick-btn">
+            <span class="ob-qb-icon">✉️</span>
+            <div>
+              <div class="ob-qb-t">Contact 3G</div>
+              <div class="ob-qb-s">Questions about the program</div>
+            </div>
+          </button>
+        </div>
+
+      </div><!-- /adm-sec-onboarding -->
+
     </div><!-- /adm-main -->
   </div><!-- /adm-body -->
 
